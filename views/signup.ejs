@@ -1,7 +1,9 @@
 <%- include('partials/header') -%>
-    <main class="container">
-        <div class="row justify-content-center">
-            <section class="col-6 mt-5">
+<body class="login-signup-body">
+    <main class="main-login-container container">
+        <div class="login-hero-content-container row justify-content-center col-11 col-md-8 col-lg-6 m-auto bg-light">
+          <h2 class="row justify-content-center mt-5 mb-3"> Member Registration </h2>
+          <section class="login-form-content-container col-10 col-lg-10 mt-2 mb-5">
                 <% if (locals.messages.errors) { %>
                     <% messages.errors.forEach( el => { %>
                         <div class="alert alert-danger"><%= el.msg %></div>
@@ -12,7 +14,7 @@
                         <div class="alert alert-info"><%= el.msg %></div>
                     <% }) %>    
                 <% } %>
-                <form action="/signup" method="POST">
+                <form action="/signup" method="POST" class="sign-up-form">
                     <div class="mb-3">
                         <label for="userName" class="form-label">User Name</label>
                         <input type="text" class="form-control" id="userName" name="userName">
@@ -29,8 +31,10 @@
                     <div class="mb-3">
                         <label for="confirmPassword" class="form-label">Confirm Password</label>
                         <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
-                      </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                    <div class="login-button-div container row justify-content-center">
+                      <button type="submit" class="btn cta-btn col-12 col-md-8 col-lg-6">Submit</button>
+                    </div>
                   </form>
             </section>
         </div>
