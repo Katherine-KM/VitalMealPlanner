@@ -68,6 +68,11 @@ label {
     font-size: 18px;
     font-weight:500;
 }
+
+fieldset div {
+    display: inline-block;
+}
+
 /* Media Query Break Points */
 
 /* Small devices (landscape phones, 576px and up)
