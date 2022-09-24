@@ -1,8 +1,8 @@
 /* General Styling */
 :root{
-    --cta-green: #55c63a;
-    --cta-green-hover: #449f2e;
-    --primary-color: #ab3ac6;    
+    --primary-color: #55c63a; 
+    --secondary-color: #449f2e;
+    --random-color: #ab3ac6;    
 }
 
 * {
@@ -10,46 +10,32 @@
     padding: 0; 
 }
 
-body {
+/* body {
     background-image: url('../imgs/i-like-food.svg');
+} */
+
+/* Bootstrap classes reassignment styles */
+
+.container-xxl {
+    max-width: 1400px;
 }
 
-/* CSS for Btns and Links */
-
-.cta-btn {
-    background-color: var(--cta-green);
-    color: white;
-    transition: all 0.8s; 
-    font-size: 22px;
-    box-shadow: 0 .5rem .5rem rgba(0,0,0,0.2);
+.btn-primary{
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
 }
+
+.btn-primary:hover {
+    background-color: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
+}
+
+/* Login Page Styles */
 
 .login-button-div {
     margin: 0 auto;
     padding-top:1rem; 
 }
-
-.cta-btn:hover {
-    color: white;
-    background-color: var(--cta-green-hover);
-}
-
-a {
-    color:var(--cta-green)
-}
-
-a:hover {
-    color: var(--cta-green-hover);
-}
-
-/* Header/Nav Styling */
-nav {
-    box-shadow: 0 .5rem .5rem rgba(0,0,0,0.5);
-    height: 75px; 
-}
-
-
-/* Login and Signup Page CSS */
 
 .login-signup-body {
     background-image: url('../imgs/login-page-lg.jpg');
