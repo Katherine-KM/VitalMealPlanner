@@ -26,15 +26,24 @@
     <link rel="stylesheet" href="/css/style.css" />
   </head>
     <body>
-      <header> 
-        <nav class="navbar bg-navbar-light bg-light justify-content-between sticky-top">
-          <div class="container col-10">
-            <a class="navbar-brand" href="/">
-              <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
-              Vital Health Planner
-            </a>
-          </div>
-        </nav>
-      </header> 
+      <div class="container-xxl px-md-5 bg-white shadow-lg">
+
+
+        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+
+          <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+            <!-- <img src="../imgs/login-page-sm.jpg" width="229" height="68" alt="Vital Cook Book Logo"> --> Vital CookBook
+          </a>
+
+          <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="/" class="nav-link px-3 link-secondary">Explore</a></li>
+            <li><a href="/profile" class="nav-link px-3 link-secondary">Create Recipe</a></li>
+            <li><a href="/" class="nav-link px-3 link-secondary">My Recipes</a></li>
+            <li><a href="/" class="nav-link px-3 link-secondary">Favorites</a></li>
+            <li> <a href="/logout" class="btn btn-outline-dark">Logout</a> </li>
+          </ul>
+
+        </header>
+      </div>
     </body>
 </html>
