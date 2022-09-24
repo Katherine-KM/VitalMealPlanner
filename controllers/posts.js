@@ -26,6 +26,14 @@ module.exports = {
       console.log(err);
     }
   },
+  getMyRecipes: async (req, res) => {
+    try {
+      const posts = await Post.find().sort({ createdAt: "desc" }).lean();
+      res.render("myrecipes.ejs", { posts: posts, title:'Vital Cook Book - Recipe Feed' });
+    } catch (err) {
+      console.log(err);
+    }
+  },
   getPost: async (req, res) => {
     try {
       const post = await Post.findById(req.params.id);
