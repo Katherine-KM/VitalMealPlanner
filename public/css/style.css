@@ -2,12 +2,16 @@
 :root{
     --cta-green: #55c63a;
     --cta-green-hover: #449f2e;
-    --primary-color: #ab3ac6;
+    --primary-color: #ab3ac6;    
 }
 
 * {
     margin: 0;
     padding: 0; 
+}
+
+body {
+    background-image: url('../imgs/i-like-food.svg');
 }
 
 /* CSS for Btns and Links */
