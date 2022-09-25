@@ -1,5 +1,6 @@
 const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
+const Category = require("../models/Category");
 
 module.exports = {
   getProfile: async (req, res) => {
@@ -12,8 +13,12 @@ module.exports = {
   },
   getFeed: async (req, res) => {
     try {
+      const limitNumber = 5; 
+      const categories = await Category.find({}).limit(limitNumber);
       const posts = await Post.find().sort({ createdAt: "desc" }).lean();
-      res.render("feed.ejs", { posts: posts, title:'Vital Cook Book - Recipe Feed' });
+
+      res.render("feed.ejs", { posts: posts, title:'Vital Cook Book - Recipe Feed', categories : categories });
+      
     } catch (err) {
       console.log(err);
     }
@@ -90,3 +95,90 @@ module.exports = {
     }
   },
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// async function insertData(){
+//   try {
+//     await Category.insertMany(
+    //   [
+    //     {
+    //       "name":"breakfast",
+    //       "image": "../imgs/breakfast.webp"
+    //     },
+    //     {
+    //       "name":"lunch",
+    //       "image": "../imgs/lunch.webp"
+    //     },
+    //     {
+    //       "name":"dinner",
+    //       "image": "../imgs/dinner.webp"
+    //     },
+    //     {
+    //       "name":"appetizer",
+    //       "image": "../imgs/appetizer.webp"
+    //     },
+    //     {
+    //       "name":"side-dish",
+    //       "image": "../imgs/side-dish.webp"
+    //     },
+    //     {
+    //       "name":"salad",
+    //       "image": "../imgs/salad.webp"
+    //     },
+    //     {
+    //       "name":"soup",
+    //       "image": "../imgs/soup.webp"
+    //     },
+    //     {
+    //       "name":"dessert",
+    //       "image": "../imgs/dessert.webp"
+    //     },
+    //     {
+    //       "name":"alcohol",
+    //       "image": "../imgs/alcohol.webp"
+    //     },
+    //     {
+    //       "name":"drinks",
+    //       "image": "../imgs/drinks.webp"
+    //     },
+    //     {
+    //       "name":"holiday",
+    //       "image": "../imgs/holiday.webp"
+    //     },
+    //     {
+    //       "name":"snacks",
+    //       "image": "../imgs/snack.webp"
+    //     },
+    //   ]
+    // );
+//   } catch (error) {
+//     console.log('err', error)
+//   }
+// }
+
+// insertData();
