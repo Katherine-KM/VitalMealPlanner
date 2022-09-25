@@ -29,6 +29,15 @@ const PostSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  ingredients: {
+    type: Array,
+    required:  true,
+  },
+  category: {
+    type: String,
+    enum:['Breakfast', 'Lunch', 'Dinner', 'Side Dishes', 'Soups', 'Desserts', 'Alcohol', 'Drinks', 'Holiday Recipes', 'Snacks', 'Salads'],
+    required: true,
+  }
 });
 
 module.exports = mongoose.model("Post", PostSchema);
