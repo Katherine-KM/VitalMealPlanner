@@ -23,6 +23,15 @@ module.exports = {
       console.log(err);
     }
   },
+  getCategories: async (req, res) => {
+    try {
+      const limitNumber = 20; 
+      const categories = await Category.find({}).limit(limitNumber);
+      res.render("categories.ejs", {title: 'Vital CookBook - Categories', categories: categories});
+    } catch (err) {
+      console.log(err);
+    }
+  },
   getFavorites: async (req, res) => {
     try {
       const posts = await Post.find().sort({ createdAt: "desc" }).lean();

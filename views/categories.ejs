@@ -1,0 +1,26 @@
+<%- include('partials/header') -%>
+<div class="container">
+    <h1 class="pb-4 text-center">Explore Categories</h1>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb d-flex justify-content-center">
+            <li class="breadcrumb-item"><a href="/feed">Feed</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Explore Categories</li>
+        </ol>
+    </nav> 
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-6 g-2 g-lg g-lg-3 py-4">
+        <% if(categories != '') { %>
+            <% categories.forEach(function(category,index) { %>
+            <a href="/categories/<%- category.name%>" class="col text-center category__link">
+                <div class="category__img shadow">
+                <img src="<%- category.image %>" alt="<%- category.name %>" loading="lazy">
+                </div>
+                <div class="pt-1"><%- category.name %></div>
+            </a>
+            <% }) %>
+        <% } %>
+    </div>
+</div>
+
+  <%- include('partials/footer') -%>
