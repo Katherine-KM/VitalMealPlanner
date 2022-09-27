@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const PostSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: true,
+    require: true,
   },
   image: {
     type: String,
@@ -15,11 +15,11 @@ const PostSchema = new mongoose.Schema({
   },
   caption: {
     type: String,
-    required: true,
+    require: true,
   },
   likes: {
     type: Number,
-    required: true,
+    require: true,
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
@@ -30,14 +30,21 @@ const PostSchema = new mongoose.Schema({
     default: Date.now,
   },
   ingredients: {
-    type: Array,
-    required:  true,
+    type: [String],
+    require:  true,
   },
   category: {
-    type: String,
-    enum:['Breakfast', 'Lunch', 'Dinner', 'Side Dishes', 'Soups', 'Desserts', 'Alcohol', 'Drinks', 'Holiday Recipes', 'Snacks', 'Salads'],
-    required: true,
-  }
+    type: [String],
+    require: true,
+  },
+  directions: {
+    type: [String],
+    require: true,
+  },
+  favorites: {
+    type: Array,
+    require: true,
+  },
 });
 
 module.exports = mongoose.model("Post", PostSchema);

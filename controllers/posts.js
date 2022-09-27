@@ -68,6 +68,9 @@ module.exports = {
         caption: req.body.caption,
         likes: 0,
         user: req.user.id,
+        ingredients: req.body.ingredients,
+        directions: req.body.directions,
+        category: req.body.categories,
       });
       console.log("Post has been added!");
       res.redirect("/profile");
