@@ -1,6 +1,5 @@
 const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
-const Category = require("../models/Category");
 
 module.exports = {
   getProfile: async (req, res) => {
@@ -19,14 +18,6 @@ module.exports = {
 
       res.render("feed.ejs", { posts: posts, title:'Vital Cook Book - Recipe Feed', categories : categories });
       
-    } catch (err) {
-      console.log(err);
-    }
-  },
-  getCategories: async (req, res) => {
-    try {
-      const categories = await Category.find({})
-      res.render("categories.ejs", {title: 'Vital CookBook - Categories', categories: categories});
     } catch (err) {
       console.log(err);
     }
