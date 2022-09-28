@@ -1,11 +1,12 @@
 const cloudinary = require("../middleware/cloudinary");
-const Post = require("../models/Post");
+const Recipe = require("../models/Recipe");
+const Category = require("../models/Category");
 
 module.exports = {
   getProfile: async (req, res) => {
     try {
-      const posts = await Post.find({ user: req.user.id });
-      res.render("profile.ejs", { posts: posts, user: req.user, title: 'Vital Cook Book - Profile' });
+      const recipes = await Recipe.find({ user: req.user.id });
+      res.render("profile.ejs", { recipes: recipes, user: req.user, title: 'Vital Cook Book - Profile' });
     } catch (err) {
       console.log(err);
     }
@@ -14,9 +15,9 @@ module.exports = {
     try {
       const limitNumber = 5; 
       const categories = await Category.find({}).limit(limitNumber);
-      const posts = await Post.find().sort({ createdAt: "desc" }).lean();
+      const recipes = await Recipe.find().sort({ createdAt: "desc" }).lean();
 
-      res.render("feed.ejs", { posts: posts, title:'Vital Cook Book - Recipe Feed', categories : categories });
+      res.render("feed.ejs", { recipes: recipes, title:'Vital Cook Book - Recipe Feed', categories : categories });
       
     } catch (err) {
       console.log(err);
@@ -24,34 +25,34 @@ module.exports = {
   },
   getFavorites: async (req, res) => {
     try {
-      const posts = await Post.find().sort({ createdAt: "desc" }).lean();
-      res.render("favorites.ejs", { posts: posts, title:'Vital Cook Book - Recipe Feed' });
+      const recipes = await Recipe.find().sort({ createdAt: "desc" }).lean();
+      res.render("favorites.ejs", { recipes: recipes, title:'Vital Cook Book - Recipe Feed' });
     } catch (err) {
       console.log(err);
     }
   },
   getMyRecipes: async (req, res) => {
     try {
-      const posts = await Post.find().sort({ createdAt: "desc" }).lean();
-      res.render("myrecipes.ejs", { posts: posts, title:'Vital Cook Book - Recipe Feed' });
+      const recipes = await Recipe.find().sort({ createdAt: "desc" }).lean();
+      res.render("myrecipes.ejs", { recipes: recipes, title:'Vital Cook Book - Recipe Feed' });
     } catch (err) {
       console.log(err);
     }
   },
-  getPost: async (req, res) => {
+  getRecipe: async (req, res) => {
     try {
-      const post = await Post.findById(req.params.id);
-      res.render("post.ejs", { post: post, user: req.user, title:'Vital Cook Book - Post'});
+      const recipe = await Recipe.findById(req.params.id);
+      res.render("recipe.ejs", { recipe: recipe, user: req.user, title:'Vital Cook Book - Post'});
     } catch (err) {
       console.log(err);
     }
   },
-  createPost: async (req, res) => {
+  createRecipe: async (req, res) => {
     try {
       // Upload image to cloudinary
       const result = await cloudinary.uploader.upload(req.file.path);
 
-      await Post.create({
+      await Recipe.create({
         title: req.body.title,
         image: result.secure_url,
         cloudinaryId: result.public_id,
@@ -62,35 +63,35 @@ module.exports = {
         directions: req.body.directions,
         category: req.body.categories,
       });
-      console.log("Post has been added!");
+      console.log("Recipe has been added!");
       res.redirect("/profile");
     } catch (err) {
       console.log(err);
     }
   },
-  likePost: async (req, res) => {
+  likeRecipe: async (req, res) => {
     try {
-      await Post.findOneAndUpdate(
+      await Recipe.findOneAndUpdate(
         { _id: req.params.id },
         {
           $inc: { likes: 1 },
         }
       );
       console.log("Likes +1");
-      res.redirect(`/post/${req.params.id}`);
+      res.redirect(`/recipe/${req.params.id}`);
     } catch (err) {
       console.log(err);
     }
   },
-  deletePost: async (req, res) => {
+  deleteRecipe: async (req, res) => {
     try {
       // Find post by id
-      let post = await Post.findById({ _id: req.params.id });
+      let recipe = await Recipe.findById({ _id: req.params.id });
       // Delete image from cloudinary
-      await cloudinary.uploader.destroy(post.cloudinaryId);
+      await cloudinary.uploader.destroy(recipe.cloudinaryId);
       // Delete post from db
-      await Post.remove({ _id: req.params.id });
-      console.log("Deleted Post");
+      await Recipe.remove({ _id: req.params.id });
+      console.log("Deleted Recipe");
       res.redirect("/profile");
     } catch (err) {
       res.redirect("/profile");
