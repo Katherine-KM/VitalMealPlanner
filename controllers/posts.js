@@ -25,8 +25,7 @@ module.exports = {
   },
   getCategories: async (req, res) => {
     try {
-      const limitNumber = 20; 
-      const categories = await Category.find({}).limit(limitNumber);
+      const categories = await Category.find({})
       res.render("categories.ejs", {title: 'Vital CookBook - Categories', categories: categories});
     } catch (err) {
       console.log(err);
