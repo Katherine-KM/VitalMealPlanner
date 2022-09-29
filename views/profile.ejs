@@ -1,108 +1,15 @@
 <%- include('partials/header') -%>
-<div class="container">
-  <div class="row mt-5">
-      <div class="col-6">
-          <div>
-              <p><strong>User Name</strong>: <%= user.userName %></p>
-              <p><strong>Email</strong>: <%= user.email %></p>
-          </div>
-          <div class="mt-5">
-            <h2>Create A Recipe</h2>
-            <form action="/recipe/createRecipe" enctype="multipart/form-data" method="POST">
-              <div class="mb-3">
-                  <label for="title" class="form-label">Title</label>
-                  <input type="text" class="form-control" id="title" name="title">
-              </div>
-              <div class="mb-3">
-                <label for="caption" class="form-label">Description</label>
-                <textarea class="form-control" id="caption" name="caption"></textarea>
-              </div>
-              <div class="mb-3">
-                <label for="imgUpload" class="form-label">Image</label>
-                <input type="file" class="form-control" id="imageUpload" name="file">
-              </div>
-              <div class="mb-3">
-                <label for="ingredients" class="form-label">Ingredients</label>
-                <textarea class="form-control" id="ingredients" name="ingredients" placeholder="Put each ingredient on its own line." rows="5"></textarea>
-              </div>
-              <div class="mb-3">
-                <label for="directions" class="form-label">Directions</label>
-                <textarea class="form-control" id="directions" name="directions" placeholder="Put each step on its own line." rows="5"></textarea>
-              </div>
-              <div class="mb-3">
-                <legend>Recipe Type (Choose as many that applies):</legend>
-                <fieldset>
-                  <div class="col-3">
-                    <input type="checkbox" name="categories" value="breakfast">
-                    <label for="breakfast">Breakfast</label>
-                  </div>
-                  <div class="col-3">
-                    <input type="checkbox" name="categories" value="lunch">
-                    <label for="Lunch">Lunch</label>
-                  </div>
-                  <div class="col-3">
-                    <input type="checkbox" name="categories" value="dinner">
-                    <label for="dinner">Dinner</label>
-                  </div>
-                  <div class="col-3">
-                    <input type="checkbox" name="categories" value="appetizer">
-                    <label for="appetizer">Appetizer</label>
-                  </div>
-                  <div class="col-3">
-                    <input type="checkbox" name="categories" value="side-dish">
-                    <label for="side-dish">Side-Dish</label>
-                  </div>
-                  <div class="col-3">
-                    <input type="checkbox" name="categories" value="salad">
-                    <label for="salad">Salad</label>
-                  </div>
-                  <div class="col-3">
-                    <input type="checkbox" name="categories" value="soup">
-                    <label for="soup">Soup</label>
-                  </div>
-                  <div class="col-3">
-                    <input type="checkbox" name="categories" value="dessert">
-                    <label for="dessert">Dessert</label>
-                  </div>
-                  <div class="col-3">
-                    <input type="checkbox" name="categories" value="alcohol">
-                    <label for="alcohol">Alcohol</label>
-                  </div>
-                  <div class="col-3">
-                    <input type="checkbox" name="categories" value="drinks">
-                    <label for="drinks">Drinks</label>
-                  </div>
-                  <div class="col-3">
-                    <input type="checkbox" name="categories" value="holiday">
-                    <label for="holiday">Holiday</label>
-                  </div>
-                  <div class="col-3">
-                    <input type="checkbox" name="categories" value="snacks">
-                    <label for="holiday">Snacks</label>
-                  </div>
-                </fieldset>                              
-              </div>
-              <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
-            </form>
-          </div>
-      </div>
-      <div class="col-6">
-        <ul class="row list-unstyled">
-        <% for(var i=0; i<recipes.length; i++) {%>
-          <li class="col-6 justify-content-between mt-5">
-            <a href="/recipe/<%= recipes[i]._id%>">
-              <img class="img-fluid" src="<%= recipes[i].image%>">
-            </a>
-          </li>
-        <% } %>
-        </ul>
-        <div class="row justify-content-center mt-5">
-          <a class="btn btn-primary" href="/feed">Return to Feed</a>
-        </div>  
-      </div>  
-    </div>
-  </div>
-</div>
-<%- include('partials/footer') -%>
 
-<img src="/public/imgs/breakfast.webp" alt="">
+<div class="container-xxl">
+    <ul class="row list-unstyled">
+        <% for(let i = 0; i < recipes.length; i++) { %>
+            <li class="col-3 mt-5 justify-content-between">
+                <a href="/recipe/<%= recipes[i].id %>">
+                    <img class="img-fluid" src="<%= recipes[i].image %>" alt="<%= recipes[i].name %>">
+                </a>
+            </li>
+        <% } %>
+    </ul>
+</div> 
+
+<%- include('partials/footer') -%>

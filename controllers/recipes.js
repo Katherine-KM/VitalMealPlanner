@@ -3,10 +3,10 @@ const Recipe = require("../models/Recipe");
 const Category = require("../models/Category");
 
 module.exports = {
-  getProfile: async (req, res) => {
+  getCreateRecipe: async (req, res) => {
     try {
       const recipes = await Recipe.find({ user: req.user.id });
-      res.render("profile.ejs", { recipes: recipes, user: req.user, title: 'Vital Cook Book - Profile' });
+      res.render("create-recipe.ejs", { recipes: recipes, user: req.user, title: 'Vital Cook Book - Create Recipe' });
     } catch (err) {
       console.log(err);
     }
@@ -31,10 +31,10 @@ module.exports = {
       console.log(err);
     }
   },
-  getMyRecipes: async (req, res) => {
+  getProfile: async (req, res) => {
     try {
-      const recipes = await Recipe.find().sort({ createdAt: "desc" }).lean();
-      res.render("myrecipes.ejs", { recipes: recipes, title:'Vital Cook Book - Recipe Feed' });
+      const recipes = await Recipe.find({ user: req.user.id });
+      res.render("profile.ejs", { recipes: recipes, user: req.user, title: 'Vital Cook Book - Profile' });
     } catch (err) {
       console.log(err);
     }
