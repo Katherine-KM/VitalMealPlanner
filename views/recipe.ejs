@@ -4,6 +4,7 @@
     <div class="col-6">
       <h2><%= recipe.title %></h2>
       <img class="img-fluid" src="<%= recipe.image%>" />
+
       <div class="row justify-content-between">
         <form
           class="col-1"
@@ -13,6 +14,11 @@
           <button class="btn btn-primary fa fa-heart" type="submit"></button>
         </form>
         <h3 class="col-3">Likes: <%= recipe.likes %></h3>
+
+        <form class="col-1" action="/recipe/favoriteRecipe/<%= recipe.id %>?_method=PUT" method="POST">
+          <button class="<%if(recipe.favorites.includes(user.id)){ %> fas fa-solid fa-star <%} else { %> far fa-regular fa-star <% }%> btn btn-primary" type="submit"></button>
+        </form>
+
         <%if(recipe.user == user.id){ %>
         <form
           action="/recipe/deleteRecipe/<%= recipe.id %>?_method=DELETE"
@@ -24,9 +30,11 @@
         <%}%>
       </div>
     </div>
+
     <div class="col-3 mt-5">
       <p><%= recipe.caption %></p>
     </div>
+
     <div class="col-6 mt-5">
       <a class="btn btn-primary" href="/profile">Return to Profile</a>
       <a class="btn btn-primary" href="/feed">Return to Feed</a>

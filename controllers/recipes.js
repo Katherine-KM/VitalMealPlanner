@@ -83,6 +83,41 @@ module.exports = {
       console.log(err);
     }
   },
+  favoriteRecipe: async (req, res) => {
+    let bookmarked = false;
+    try {
+      let recipe = await Recipe.findById({ _id: req.params.id });
+      bookmarked = (recipe.favorites.includes(req.user.id))
+    } catch (err) {
+      console.log(err);
+    }
+
+    if(bookmarked){
+      try {
+        await Recipe.findOneAndUpdate({ _id: req.params.id }, 
+        {$pull : {'favorites': req.user.id}
+        })
+        console.log('Removed User from bookmarks array');
+        res.redirect(`/recipe/${req.params.id}`);
+      }catch(err){
+        console.log(err)
+      }
+    }
+
+    else {
+      try{
+        await Recipe.findOneAndUpdate({ _id: req.params.id },
+          {
+            $addToSet : {'favorites' : req.user.id}
+          })
+
+          console.log('Added user to favorites array')
+          res.redirect(`/recipe/${req.params.id}`);
+      }catch(err){
+        console.log(err)
+      }
+    }
+  },
   deleteRecipe: async (req, res) => {
     try {
       // Find post by id

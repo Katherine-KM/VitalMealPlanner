@@ -11,6 +11,8 @@ router.post("/createRecipe", upload.single("file"), recipesController.createReci
 
 router.put("/likeRecipe/:id", recipesController.likeRecipe);
 
+router.put("/favoriteRecipe/:id", recipesController.favoriteRecipe);
+
 router.delete("/deleteRecipe/:id", recipesController.deleteRecipe);
 
 module.exports = router;
