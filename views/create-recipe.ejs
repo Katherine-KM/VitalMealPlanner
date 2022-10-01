@@ -2,90 +2,132 @@
 <div class="container">
   <div class="row mt-5 justify-content-center">
       <div class="col-10">
+
           <div class="col-3 mx-auto text-center">
               <p><strong>User Name</strong>: <%= user.userName %></p>
               <p><strong>Email</strong>: <%= user.email %></p>
           </div>
+
           <div class="row mt-5 col-3 mx-auto">
             <a class="btn btn-primary" href="/feed">Return to Feed</a>
           </div>  
+
+          <!-- Create Recipe Form -->
+
           <div class="mt-5">
             <h2>Create A Recipe</h2>
             <form action="/recipe/createRecipe" enctype="multipart/form-data" method="POST">
+
               <div class="mb-3">
                   <label for="title" class="form-label">Title</label>
                   <input type="text" class="form-control" id="title" name="title">
               </div>
+
               <div class="mb-3">
                 <label for="caption" class="form-label">Description</label>
                 <textarea class="form-control" id="caption" name="caption"></textarea>
               </div>
+
               <div class="mb-3">
                 <label for="imgUpload" class="form-label">Image</label>
                 <input type="file" class="form-control" id="imageUpload" name="file">
               </div>
+
               <div class="mb-3">
                 <label for="ingredients" class="form-label">Ingredients</label>
-                <textarea class="form-control" id="ingredients" name="ingredients" placeholder="Put each ingredient on its own line." rows="5"></textarea>
+                <div class="ingredient-list">
+                  <div class="ingredient-div mb-1">
+                    <input name="ingredients" type="text" id="add-ingredient-input">
+                  </div>
+                </div>
               </div>
+
+              <div class="col-12">
+                <button type="button" class="btn btn-outline-dark" id="add-ingredient-btn">+ Ingredient</button>
+              </div>
+
               <div class="mb-3">
                 <label for="directions" class="form-label">Directions</label>
-                <textarea class="form-control" id="directions" name="directions" placeholder="Put each step on its own line." rows="5"></textarea>
+                <div class="direction-list">
+                  <div class="direction-div mb-1">
+                    <input name="directions" type="text" id="add-direction-input">
+                  </div>
+                </div>
               </div>
+              
+              <div class="col-12">
+                <button type="button" class="btn btn-outline-dark" id="add-direction-btn">+ Direction</button>
+              </div>
+
               <div class="mb-3">
                 <legend>Recipe Type (Choose as many that applies):</legend>
                 <fieldset>
+
                   <div class="col-5 col-sm-3">
                     <input type="checkbox" name="categories" value="breakfast">
                     <label for="breakfast">Breakfast</label>
                   </div>
+
                   <div class="col-5 col-sm-3">
                     <input type="checkbox" name="categories" value="lunch">
                     <label for="Lunch">Lunch</label>
                   </div>
+
                   <div class="col-5 col-sm-3">
                     <input type="checkbox" name="categories" value="dinner">
                     <label for="dinner">Dinner</label>
                   </div>
+
                   <div class="col-5 col-sm-3">
                     <input type="checkbox" name="categories" value="appetizer">
                     <label for="appetizer">Appetizer</label>
                   </div>
+
                   <div class="col-5 col-sm-3">
                     <input type="checkbox" name="categories" value="side-dish">
                     <label for="side-dish">Side-Dish</label>
                   </div>
+
                   <div class="col-5 col-sm-3">
                     <input type="checkbox" name="categories" value="salad">
                     <label for="salad">Salad</label>
                   </div>
+
                   <div class="col-5 col-sm-3">
                     <input type="checkbox" name="categories" value="soup">
                     <label for="soup">Soup</label>
                   </div>
+
                   <div class="col-5 col-sm-3">
                     <input type="checkbox" name="categories" value="dessert">
                     <label for="dessert">Dessert</label>
                   </div>
+
                   <div class="col-5 col-sm-3">
                     <input type="checkbox" name="categories" value="alcohol">
                     <label for="alcohol">Alcohol</label>
                   </div>
+
                   <div class="col-5 col-sm-3">
                     <input type="checkbox" name="categories" value="drinks">
                     <label for="drinks">Drinks</label>
                   </div>
+
                   <div class="col-5 col-sm-3">
                     <input type="checkbox" name="categories" value="holiday">
                     <label for="holiday">Holiday</label>
                   </div>
+
                   <div class="col-5 col-sm-3">
                     <input type="checkbox" name="categories" value="snacks">
                     <label for="holiday">Snacks</label>
                   </div>
+
                 </fieldset>                              
               </div>
+
               <button type="submit" class="btn btn-primary mb-3" value="Upload">Submit</button>
+
             </form>
           </div>
         </div>
@@ -93,4 +135,6 @@
     </div>
   </div>
 </div>
+
+<script src="../js/create-recipe.js"></script>
 <%- include('partials/footer') -%>
