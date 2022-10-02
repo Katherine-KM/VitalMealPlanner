@@ -25,7 +25,7 @@ module.exports = {
   },
   getFavorites: async (req, res) => {
     try {
-      const recipes = await Recipe.find().sort({ createdAt: "desc" }).lean();
+      const recipes = await Recipe.find({favorites: req.user.id}).sort({ createdAt: "desc" }).lean();
       res.render("favorites.ejs", { recipes: recipes, title:'Vital Cook Book - Recipe Feed' });
     } catch (err) {
       console.log(err);
