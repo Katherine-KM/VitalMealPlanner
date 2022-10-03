@@ -57,7 +57,6 @@ module.exports = {
         image: result.secure_url,
         cloudinaryId: result.public_id,
         caption: req.body.caption,
-        likes: 0,
         user: req.user.id,
         ingredients: req.body.ingredients,
         directions: req.body.directions,
@@ -70,24 +69,43 @@ module.exports = {
     }
   },
   likeRecipe: async (req, res) => {
+    let liked = false; 
     try {
-      await Recipe.findOneAndUpdate(
-        { _id: req.params.id },
-        {
-          $inc: { likes: 1 },
-        }
-      );
-      console.log("Likes +1");
-      res.redirect(`/recipe/${req.params.id}`);
+      let recipe = await Recipe.findById({ _id: req.params.id });
+      liked = (recipe.likes.includes(req.user.id));
     } catch (err) {
       console.log(err);
+    }
+
+    if(liked){
+      try{
+        await Recipe.findOneAndUpdate({ _id: req.params.id },
+          {$pull : {'likes': req.user.id}
+        })
+        console.log('Removed User from Likes array');
+        res.redirect(`/recipe/${req.params.id}`);
+      } catch(err){
+        console.log(err)
+      }
+    }
+
+    else {
+      try{
+        await Recipe.findOneAndUpdate({ _id: req.params.id },
+          {$addToSet: {'likes': req.user.id}
+        })
+        console.log('Added User to Likes array');
+        res.redirect(`/recipe/${req.params.id}`);
+      } catch(err){
+        console.log(err)
+      }
     }
   },
   favoriteRecipe: async (req, res) => {
     let bookmarked = false;
     try {
       let recipe = await Recipe.findById({ _id: req.params.id });
-      bookmarked = (recipe.favorites.includes(req.user.id))
+      bookmarked = (recipe.favorites.includes(req.user.id));
     } catch (err) {
       console.log(err);
     }
@@ -97,7 +115,7 @@ module.exports = {
         await Recipe.findOneAndUpdate({ _id: req.params.id }, 
         {$pull : {'favorites': req.user.id}
         })
-        console.log('Removed User from bookmarks array');
+        console.log('Removed User from favorites array');
         res.redirect(`/recipe/${req.params.id}`);
       }catch(err){
         console.log(err)
@@ -107,10 +125,8 @@ module.exports = {
     else {
       try{
         await Recipe.findOneAndUpdate({ _id: req.params.id },
-          {
-            $addToSet : {'favorites' : req.user.id}
+          {$addToSet : {'favorites' : req.user.id}
           })
-
           console.log('Added user to favorites array')
           res.redirect(`/recipe/${req.params.id}`);
       }catch(err){

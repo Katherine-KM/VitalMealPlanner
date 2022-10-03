@@ -11,9 +11,9 @@
           action="/recipe/likeRecipe/<%= recipe.id %>?_method=PUT"
           method="POST"
         >
-          <button class="btn btn-primary fa fa-heart" type="submit"></button>
+          <button class="<% if(recipe.likes.includes(user.id)){ %> fas fa-heart <% } else { %> far fa-heart <% } %> btn btn-primary" type="submit"></button>
         </form>
-        <h3 class="col-3">Likes: <%= recipe.likes %></h3>
+        <h3 class="col-3">Likes: <%= recipe.likes.length %></h3>
 
         <form class="col-1" action="/recipe/favoriteRecipe/<%= recipe.id %>?_method=PUT" method="POST">
           <button class="<%if(recipe.favorites.includes(user.id)){ %> fas fa-solid fa-star <%} else { %> far fa-regular fa-star <% }%> btn btn-primary" type="submit"></button>
