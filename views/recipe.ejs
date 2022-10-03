@@ -2,7 +2,8 @@
 <div class="container">
   <div class="row justify-content-center mt-5">
     <div class="col-6">
-      <h2><%= recipe.title %></h2>
+      <h1> <%= recipe.title %> </h1>
+      <span> Created By <%= user.userName %> </span>
       <img class="img-fluid" src="<%= recipe.image%>" />
 
       <div class="row justify-content-between">
@@ -28,17 +29,30 @@
           <button class="btn btn-primary fa fa-trash" type="submit"></button>
         </form>
         <%}%>
-      </div>
-    </div>
 
-    <div class="col-3 mt-5">
-      <p><%= recipe.caption %></p>
+      </div>
+      <%= recipe.caption %> 
     </div>
 
     <div class="col-6 mt-5">
-      <a class="btn btn-primary" href="/profile">Return to Profile</a>
-      <a class="btn btn-primary" href="/feed">Return to Feed</a>
+      <div class="col-12">
+        <p> <%= recipe.description %> </p>
+        <ul>
+          <% for(let i = 0; i < recipe.ingredients.length; i++){ %>
+            <li> <%= recipe.ingredients[i] %> </li>
+          <% } %>
+      </ul>
+      <ul>
+        <% for(let i = 0; i < recipe.directions.length; i++){ %>
+          <li> <%= recipe.directions[i] %> </li>
+        <% } %>
+    </ul>
     </div>
+    
+  </div>
+  <div class="col-6 mt-5 text-center">
+    <a class="btn btn-primary" href="/profile">Return to Profile</a>
+    <a class="btn btn-primary" href="/feed">Return to Feed</a>
   </div>
 </div>
 
