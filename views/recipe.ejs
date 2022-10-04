@@ -54,6 +54,16 @@
       <button class="btn btn-primary" type="submit">+ New Comment</button>
     </form>
 
+    <div class="mt-5 text-center">
+      <ul>
+        <% for(let i=0; i < comments.length; i++) { %>
+          <div>
+            <li> <%= user.userName %> <%= comments[i].comment %> </li>
+          </div>
+        <% } %>
+      </ul>
+    </div>
+
   </div>
   <div class="col-6 mt-5 text-center">
     <a class="btn btn-primary" href="/profile">Return to Profile</a>
