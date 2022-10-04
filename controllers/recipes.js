@@ -1,5 +1,6 @@
 const cloudinary = require("../middleware/cloudinary");
 const Recipe = require("../models/Recipe");
+const Comment = require("../models/Comment");
 const Category = require("../models/Category");
 
 module.exports = {
@@ -42,7 +43,9 @@ module.exports = {
   getRecipe: async (req, res) => {
     try {
       const recipe = await Recipe.findById(req.params.id);
-      res.render("recipe.ejs", { recipe: recipe, user: req.user, title:'Vital Cook Book - Post'});
+      const comments = await Comment.find({post: req.params.id});
+      res.render("recipe.ejs", { recipe: recipe, comments: comments, user: req.user, title:`Vital Cook Book - ${recipe.title}`});
+      console.log(comments)
     } catch (err) {
       console.log(err);
     }
@@ -64,6 +67,19 @@ module.exports = {
       });
       console.log("Recipe has been added!");
       res.redirect("/profile");
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  createComment: async (req, res) => {
+    try {
+      await Comment.create({
+        comment: req.body.comment,
+        user: req.user.id,
+        post: req.params.id,
+      });
+      console.log("Comment has been created");
+      res.redirect(`/recipe/${req.params.id}`)
     } catch (err) {
       console.log(err);
     }
