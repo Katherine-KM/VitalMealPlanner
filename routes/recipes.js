@@ -9,6 +9,8 @@ router.get("/:id", ensureAuth, recipesController.getRecipe);
 
 router.post("/createRecipe", upload.single("file"), recipesController.createRecipe);
 
+router.post("/createComment/:id", recipesController.createComment);
+
 router.put("/likeRecipe/:id", recipesController.likeRecipe);
 
 router.put("/favoriteRecipe/:id", recipesController.favoriteRecipe);
