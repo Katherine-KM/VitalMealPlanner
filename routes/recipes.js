@@ -13,6 +13,8 @@ router.post("/createComment/:id", recipesController.createComment);
 
 router.put("/likeRecipe/:id", recipesController.likeRecipe);
 
+router.put("/likeComment/:id", recipesController.likeComment);
+
 router.put("/favoriteRecipe/:id", recipesController.favoriteRecipe);
 
 router.delete("/deleteRecipe/:id", recipesController.deleteRecipe);

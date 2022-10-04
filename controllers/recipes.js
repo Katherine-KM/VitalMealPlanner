@@ -45,7 +45,6 @@ module.exports = {
       const recipe = await Recipe.findById(req.params.id);
       const comments = await Comment.find({post: req.params.id});
       res.render("recipe.ejs", { recipe: recipe, comments: comments, user: req.user, title:`Vital Cook Book - ${recipe.title}`});
-      console.log(comments)
     } catch (err) {
       console.log(err);
     }
@@ -67,19 +66,6 @@ module.exports = {
       });
       console.log("Recipe has been added!");
       res.redirect("/profile");
-    } catch (err) {
-      console.log(err);
-    }
-  },
-  createComment: async (req, res) => {
-    try {
-      await Comment.create({
-        comment: req.body.comment,
-        user: req.user.id,
-        post: req.params.id,
-      });
-      console.log("Comment has been created");
-      res.redirect(`/recipe/${req.params.id}`)
     } catch (err) {
       console.log(err);
     }
@@ -164,6 +150,66 @@ module.exports = {
       res.redirect("/profile");
     }
   },
+  createComment: async (req, res) => {
+    try {
+      await Comment.create({
+        comment: req.body.comment,
+        user: req.user.id,
+        post: req.params.id,
+      });
+      console.log("Comment has been created");
+      res.redirect(`/recipe/${req.params.id}`)
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  likeComment: async (req, res) => {
+    let liked = false; 
+    let comments = await Comment.findById({ _id: req.params.id });
+    try {
+      liked = (comments.likes.includes(req.user.id));
+    } catch (err) {
+      console.log(err);
+    }
+
+    if(liked){
+      try{
+        await Comment.findOneAndUpdate({ _id: req.params.id },
+          {$pull : {'likes': req.user.id}
+        })
+        console.log('Removed User from Likes array');
+        res.redirect(`/recipe/${comments.post}`);
+      } catch(err){
+        console.log(err)
+      }
+    }
+
+    else {
+      try{
+        await Comment.findOneAndUpdate({ _id: req.params.id },
+          {$addToSet: {'likes': req.user.id}
+        })
+        console.log('Added User to Likes array');
+        res.redirect(`/recipe/${comments.post}`);
+      } catch(err){
+        console.log(err)
+      }
+    }
+  },
+  // deleteRecipe: async (req, res) => {
+  //   try {
+  //     // Find post by id
+  //     let recipe = await Recipe.findById({ _id: req.params.id });
+  //     // Delete image from cloudinary
+  //     await cloudinary.uploader.destroy(recipe.cloudinaryId);
+  //     // Delete post from db
+  //     await Recipe.remove({ _id: req.params.id });
+  //     console.log("Deleted Recipe");
+  //     res.redirect("/profile");
+  //   } catch (err) {
+  //     res.redirect("/profile");
+  //   }
+  // },
 };
 
 

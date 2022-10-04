@@ -59,10 +59,15 @@
         <% for(let i=0; i < comments.length; i++) { %>
           <div>
             <li> <%= user.userName %> <%= comments[i].comment %> </li>
+            <form action="/recipe/likeComment/<%= comments[i].id %>?_method=PUT" method="POST">
+              <button class="btn btn-primary" type="submit">Like</button>
+            </form>
+            <div> <%= comments[i].likes.length %> </div>
           </div>
         <% } %>
       </ul>
     </div>
+
 
   </div>
   <div class="col-6 mt-5 text-center">
