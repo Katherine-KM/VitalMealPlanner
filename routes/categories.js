@@ -4,7 +4,8 @@ const upload = require("../middleware/multer");
 const categoryController = require("../controllers/category");
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
-router.get("/", ensureAuth, categoryController.getCategories);
+router.get("/", categoryController.getCategories);
+router.get("/:name", categoryController.getCategoriesByName);
 
 
 module.exports = router;

@@ -1,0 +1,18 @@
+<%- include('partials/header') -%>
+
+
+
+    <div class="container-xxl row justify-content-center mt-5 mx-auto">
+        <ul class="row list-unstyled">
+            <% for(let i = 0; i < recipes.length; i++) { %>
+                <div class="col-6">
+                    <li class="col-12 justify-content-between mt-5"> <a href="/recipe/<%= recipes[i]._id %>"><img class="img-fluid" src="<%= recipes[i].image %>" alt="recipes[i].title"> </a> </li>
+                </div>
+            <% } %> 
+        </ul>
+    </div>
+
+
+
+
+<%- include('partials/footer') -%>
