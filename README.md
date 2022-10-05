@@ -18,3 +18,8 @@
 # Run
 
 `npm start`
+
+# Test/Demo
+
+Testing@gmail.com
+TesterNoTesting
