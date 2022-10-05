@@ -63,6 +63,9 @@
               <button class="btn btn-primary" type="submit">Like</button>
             </form>
             <div> <%= comments[i].likes.length %> </div>
+            <form action="/recipe/deleteComment/<%= recipe.id %>/<%= comments[i].id %>?_method=DELETE" method="POST">
+              <button class="btn btn-danger" type="submit">Delete</button>
+            </form>
           </div>
         <% } %>
       </ul>

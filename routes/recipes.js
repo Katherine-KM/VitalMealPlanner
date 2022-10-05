@@ -19,4 +19,6 @@ router.put("/favoriteRecipe/:id", recipesController.favoriteRecipe);
 
 router.delete("/deleteRecipe/:id", recipesController.deleteRecipe);
 
+router.delete("/deleteComment/:recipeId/:id", recipesController.deleteComment);
+
 module.exports = router;
