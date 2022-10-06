@@ -32,14 +32,6 @@ module.exports = {
       console.log(err);
     }
   },
-  getProfile: async (req, res) => {
-    try {
-      const recipes = await Recipe.find({ user: req.user.id });
-      res.render("profile.ejs", { recipes: recipes, user: req.user, title: 'Vital Cook Book - Profile' });
-    } catch (err) {
-      console.log(err);
-    }
-  },
   getRecipe: async (req, res) => {
     try {
       const recipe = await Recipe.findById(req.params.id);
