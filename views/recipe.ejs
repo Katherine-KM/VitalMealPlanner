@@ -3,7 +3,7 @@
   <div class="row justify-content-center mt-5">
     <div class="col-6">
       <h1> <%= recipe.title %> </h1>
-      <span> Created By <%= user.userName %> </span>
+      <span> Created By </span>
       <img class="img-fluid" src="<%= recipe.image%>" />
 
       <div class="row justify-content-between">
@@ -58,7 +58,7 @@
       <ul>
         <% for(let i=0; i < comments.length; i++) { %>
           <div>
-            <li> <%= user.userName %> <%= comments[i].comment %> </li>
+            <li> <img src="<%= comments[i].createdByProfImg %>" alt=""><%=comments[i].createdByUserName %> <%= comments[i].comment %> </li>
             <form action="/recipe/likeComment/<%= comments[i].id %>?_method=PUT" method="POST">
               <button class="btn btn-primary" type="submit">Like</button>
             </form>

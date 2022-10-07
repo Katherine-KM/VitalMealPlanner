@@ -147,6 +147,8 @@ module.exports = {
       await Comment.create({
         comment: req.body.comment,
         user: req.user.id,
+        createdByUserName: req.user.userName,
+        createdByProfImg: req.user.image,
         post: req.params.id,
       });
       console.log("Comment has been created");
