@@ -28,13 +28,21 @@
 
     <!-- Posts -->
 
-    <div class="row justify-content-center mt-5">
+    <div class="feed-post__container row justify-content-center mt-5 border border-primary">
       <ul class="row list-unstyled">
         <% for(var i=0; i<recipes.length; i++) {%>
-          <li class="col-6 justify-content-between mt-5">
-            <a href="/recipe/<%= recipes[i]._id%>">
-              <img class="img-fluid" src="<%= recipes[i].image%>">
-            </a>
+          <li class="border border-dark col-12 col-sm-4 mt-5">
+            <div class="rounded shadow w-100 border border-danger h-100">
+              <div class="feed-post__img-container rounded">
+                <a class="feed-post__link border border-danger" href="/recipe/<%= recipes[i]._id%>">
+                  <img class="feed-post__img border border-warning rounded-top" src="<%= recipes[i].image%>">
+                </a>
+              </div>
+              <div class="feed-post__details-container rounded-bottom">
+                <img class="feed-post__details-prof-img" src="<%= recipes[i].user%>">
+                <p> Meow </p>
+              </div> 
+            </div>
           </li>
         <% } %>
         </ul>

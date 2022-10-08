@@ -115,6 +115,24 @@ fieldset div {
     object-fit: cover;
 }
 
+/* Recipe cards for feed */
+.feed-post__img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 65%; 
+    overflow: hidden;
+}
+
+.feed-post__img {
+    width: 100%;
+    height: 100%; 
+    object-fit: cover;
+}
+
+.feed-post__details-container {
+    height: 35%;
+}
 /* Media Query Break Points */
 
 /* Small devices (landscape phones, 576px and up)
