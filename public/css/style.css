@@ -16,10 +16,6 @@
 
 /* Bootstrap classes reassignment styles */
 
-.container-xxl {
-    max-width: 1400px;
-}
-
 .btn-primary{
     background-color: var(--primary-color) !important;
     border-color: var(--primary-color) !important;
