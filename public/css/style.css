@@ -4,27 +4,13 @@
     --secondary-color: #04a748;
     --darkmode-grey-color: #4d4d4d;
     --darkmode-dark-color: #1d1d1d;
+    --light: #f8f9fa;
 }
 
 * {
     margin: 0;
     padding: 0; 
     font-family: 'Roboto', sans-serif;
-}
-
-/* Dark Mode Classes */
-.darkmode{
-    background-color: var(--darkmode-grey-color);
-    color: white; 
-}
-
-.darkmode-header{
-    background-color:var(--darkmode-dark-color);
-    color: white;
-}
-
-.dark-mode-toggle{
-    font-size: 24px; 
 }
 
 /* Bootstrap classes reassignment styles */
@@ -61,6 +47,10 @@
     color: white !important;
 }
 
+.border-primary {
+    border-color: var(--primary-color) !important;
+}
+
 /* Home Page Styles */
 header a {
     color: inherit;
@@ -84,16 +74,13 @@ header a span {
     padding-top:1rem; 
 }
 
-/* .main-login-container {
+.main-login-container {
     display: flex;
     align-content: center; 
-    height: calc(100vh - 75px);
+    height: calc(100vh - 175px);
+    color: inherit; 
+    background-color: var(--light);
 }
-
-.login-hero-content-container {
-    border-radius: 10px;
-    box-shadow: 0 .5rem .5rem rgba(0,0,0,0.2); 
-} */
 
 
 /* Form Styling */
@@ -153,6 +140,24 @@ fieldset div {
 .feed-post__details-container {
     height: 35%;
 }
+
+
+
+/* Dark Mode Classes */
+.darkmode{
+    background-color: var(--darkmode-grey-color);
+    color: white; 
+}
+
+.darkmode-dark{
+    background-color:var(--darkmode-dark-color);
+    color: white;
+}
+
+.dark-mode-toggle{
+    font-size: 24px; 
+}
+
 /* Media Query Break Points */
 
 /* Small devices (landscape phones, 576px and up)
