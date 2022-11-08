@@ -1,12 +1,9 @@
 <%- include('partials/header-default') -%>
 
-  <body>
-    <main class="main-login-container container">
-      <div class="row justify-content-center d-none d-lg-inline-block col-md-6 m-auto border-end border-primary">
-        <img src="../imgs/foodpic.png" alt="">
-      </div>
-      <div class="login-hero-content-container row justify-content-center col-11 col-md-8 col-lg-6 m-auto">
-        <h2 class="row justify-content-center mt-5 mb-3"> Member Registration </h2>
+  <body class="signup-body">
+    <main class="main-login-container container col-12 col-s-10 col-lg-8 col-xl-5">
+      <div class="login-hero-content-container row justify-content-center col-11 col-md-10 col-lg-11 m-auto">
+        <h2 class="row justify-content-center mt-4 mb-3"> Member Registration </h2>
         <section class="login-form-content-container col-10 col-lg-10 mt-2 mb-5">
           <% if (locals.messages.errors) { %>
             <% messages.errors.forEach( el=> { %>
