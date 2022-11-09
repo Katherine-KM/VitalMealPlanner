@@ -13,7 +13,7 @@ const enableDarkMode = () => {
 
 const disableDarkMode = () => {
     document.body.classList.remove('darkmode');
-    headerElement.classList.remove('darkmode-dark'); 
+    headerElement.classList.remove('darkmode-dark');
     darkModeToggle.classList.add('fa-moon');
     darkModeToggle.classList.remove('fa-sun');
     localStorage.setItem('darkMode', null);
