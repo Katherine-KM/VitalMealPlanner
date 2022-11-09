@@ -1,68 +1,80 @@
 <%- include('partials/header-default') -%>
 
   <body>
-    <main class="container">
+    <main class="container mb-5">
+      <section class="container mb-5 quote-container d-flex justify-content-center">
+        <figure class="text-center w-50 quote-figure">
+          <blockquote class="blockquote">
+            <p class="fs-4">Cooking is all about people. Food is maybe the only universal thing that really has the power to bring
+              everyone together. No matter what culture, everywhere around the world, people eat together. </p>
+          </blockquote>
+          <figcaption class="blockquote-footer fs-5 fw-bold">
+            Guy Fieri
+          </figcaption>
+        </figure>
+      </section>
       <section class="d-flex align-items-center col-12 justify-content-center flex-wrap text-center text-lg-left">
         <div class="col-11 col-lg-6 pe-lg-5 mb-4">
           <h1 class="fs-1 fw-bold mb-2"> What Are We About? </h1>
-          <p class="info fs-6 mb-3"> FoodShare is a place where you can discover the best recipes from chefs, bloggers, and
+          <p class="info fs-6 mb-3"> FoodShare is a place where you can discover the best recipes from chefs, bloggers,
+            and
             other food lovers. Get Inspired, share your own recipes, and connect with other people through food. </p>
           <button class="btn btn-primary"> Explore Now </button>
         </div>
         <div class="col-11 col-lg-6">
           <div class="row d-flex justify-content-center">
             <div class="col-4 p-1">
-              <div class="img-container">
+              <div class="gal-img-container">
                 <img class="gal-img rounded" src="../imgs/holiday.webp" alt="">
               </div>
             </div>
 
             <div class="col-4 p-1">
-              <div class="img-container">
+              <div class="gal-img-container">
                 <img class="gal-img gal-img-down rounded" src="../imgs/appetizer.webp" alt="">
               </div>
             </div>
 
             <div class="col-4 p-1">
-              <div class="img-container">
+              <div class="gal-img-container">
                 <img class="gal-img rounded" src="../imgs/salad.webp" alt="">
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-4 p-1">
-              <div class="img-container">
+              <div class="gal-img-container">
                 <img class="gal-img rounded" src="../imgs/drinks.webp" alt="">
               </div>
             </div>
 
             <div class="col-4 p-1">
-              <div class="img-container">
+              <div class="gal-img-container">
                 <img class="gal-img rounded" src="../imgs/snack.webp" alt="">
               </div>
             </div>
 
             <div class="col-4 p-1">
-              <div class="img-container">
+              <div class="gal-img-container">
                 <img class="gal-img rounded" src="../imgs/lunch.webp" alt="">
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-4 p-1">
-              <div class="img-container">
+              <div class="gal-img-container">
                 <img class="gal-img gal-img-up rounded" src="../imgs/alcohol.webp" alt="">
               </div>
             </div>
 
             <div class="col-4 p-1">
-              <div class="img-container">
+              <div class="gal-img-container">
                 <img class="gal-img gal-img-down rounded" src="../imgs/dessert.webp" alt="">
               </div>
             </div>
 
             <div class="col-4 p-1">
-              <div class="img-container">
+              <div class="gal-img-container">
                 <img class="gal-img rounded" src="../imgs/dinner.webp" alt="">
               </div>
             </div>
@@ -70,6 +82,22 @@
         </div>
       </section>
     </main>
-
+    <section class="container mb-5">
+      <div class="d-flex align-items-center col-12 justify-content-center flex-wrap">
+        <div class="col-lg-6 col-11 pe-lg-5">
+          <img class="w-100 rounded mb-5" src="../imgs/sushi.jpg" alt="">
+        </div>
+        <div class="col-lg-6 col-11">
+          <h2 class="fs-1 fw-bolder mb-4">Improve Your Culinary Skills</h2>
+          <ul class="list-unstyled mb-4">
+            <li class="index-li"> Learn New Recipes</li>
+            <li class="index-li"> Experiment With Food </li>
+            <li class="index-li"> Connect With Others </li>
+            <li class="index-li"> Write Your Own Recipe </li>
+          </ul>
+          <button class="btn btn-primary"> Sign Up Now </button>
+        </div>
+      </div>
+    </section>
     <script src="../js/darkmode-normal.js"> </script>
     <%- include('partials/footer') -%>
