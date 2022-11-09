@@ -15,6 +15,7 @@ html, body {
     margin: 0;
     padding: 0; 
     font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
 }
 
 /* Bootstrap classes reassignment styles */
@@ -74,13 +75,7 @@ header a span {
     color: var(--primary-color)
 }
 
-.title {
-    font-size: 3rem; 
-    font-weight: 700;
-}
-
 .info {
-    font-size: 1.3rem;
     letter-spacing: 1px;
     line-height: 1.2;
     color: rgb(138, 136, 136);
