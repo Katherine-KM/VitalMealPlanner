@@ -67,15 +67,19 @@ header {
 header a {
     color: inherit;
     font-weight: 700;
-    font-size: 25px; 
+    font-size: 20px; 
 }
 
 header a:hover {
-    color: inherit; 
+    color: var(--primary-color); 
 }
 
 header a span {
     color: var(--primary-color)
+}
+
+.brand-link {
+    font-size:25px;
 }
 
 /* Footer */
