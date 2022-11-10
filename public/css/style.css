@@ -10,6 +10,7 @@
 
 html, body {
     height: 100%;
+    min-height: 100vh;
 }
 
 * {
@@ -81,7 +82,7 @@ header a span {
 
 footer {
     background-color: var(--darkmode-dark-color);
-    color: white; 
+    color: white;   
 }
 
 /* Index Page Styles */
@@ -97,7 +98,25 @@ footer {
 
 .quote-figure {
     position:relative; 
-    top: 150px; 
+    top: 75px;
+}
+
+@media (min-width: 400px) { 
+    .quote-figure{
+        top: 125px;
+    }    
+}
+
+@media (min-width: 700px) { 
+    .quote-figure{
+        width:75%;
+    }    
+}
+
+@media (min-width: 992px) { 
+    .quote-figure{
+        width: 50%;
+    }    
 }
 
 .blockquote-footer {
