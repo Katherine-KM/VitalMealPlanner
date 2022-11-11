@@ -1,58 +1,68 @@
 <%- include('partials/header-signed-in') -%>
-  <div class="container">
-    <!-- <form id="recipe-search-form">
+
+  <body>
+    <div class="container">
+      <!-- <form id="recipe-search-form">
       <input type="text" placeholder="Search">
       <button type="submit">Submit</button>
     </form> -->
 
-<!-- Categories -->
+      <!-- Categories -->
 
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-6 g-2 g-lg g-lg-3 py-4">
-      <% if(categories != '') { %>
-        <% categories.forEach(function(category,index) { %>
-          <a href="/categories/<%- category.name%>" class="col text-center category__link">
-            <div class="category__img shadow">
-              <img src="<%- category.image %>" alt="<%- category.name %>" loading="lazy">
-            </div>
-            <div class="pt-1"><%- category.displayName %></div>
-          </a>
-        <% }) %>
-      <% } %>
-      <a href="/categories" class="col text-center category__link">
-        <div class="category__img shadow">
-          <img src="../imgs/login-page-sm.jpg" alt="See All Categories" loading="lazy">
-        </div>
-        <div class="pt-1">View All</div>
-      </a>
-    </div>
-
-    <!-- Posts -->
-
-    <div class="feed-post__container row justify-content-center mt-5 border border-primary">
-      <ul class="row list-unstyled">
-        <% for(var i=0; i<recipes.length; i++) {%>
-          <li class="border border-dark col-12 col-sm-4 mt-5">
-            <div class="rounded shadow w-100 border border-danger h-100">
-              <div class="feed-post__img-container rounded">
-                <a class="feed-post__link border border-danger" href="/recipe/<%= recipes[i]._id%>">
-                  <img class="feed-post__img border border-warning rounded-top" src="<%= recipes[i].image%>">
-                </a>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-6 g-2 g-lg g-lg-3 py-4 mb-5">
+        <% if(categories !='' ) { %>
+          <% categories.forEach(function(category,index) { %>
+            <a href="/categories/<%- category.name%>" class="col text-center category__link">
+              <div class="category__img shadow">
+                <img src="<%- category.image %>" alt="<%- category.name %>" loading="lazy">
               </div>
-              <div class="feed-post__details-container rounded-bottom">
-                <img class="feed-post__details-prof-img" src="<%= recipes[i].user%>">
-                <p> Meow </p>
-              </div> 
-            </div>
-          </li>
-        <% } %>
+              <div class="pt-1">
+                <%- category.displayName %>
+              </div>
+            </a>
+            <% }) %>
+              <% } %>
+                <a href="/categories" class="col text-center category__link">
+                  <div class="category__img shadow">
+                    <img src="../imgs/login-page-sm.jpg" alt="See All Categories" loading="lazy">
+                  </div>
+                  <div class="pt-1">View All</div>
+                </a>
+      </div>
+
+      <!-- Posts -->
+
+      <section class="post-container row justify-content-center mb-5 dm-container">
+        <ul class="row list-unstyled m-0 p-0">
+          <% for(var i=0; i<recipes.length; i++) {%>
+            <li class="col-12 col-sm-4 mb-2">
+              <div class="rounded shadow">
+                <div class="post-img-container w-100">
+                  <a class="feed-link" href="/recipe/<%= recipes[i]._id%>">
+                    <img class="post-img w-100 h-100 rounded" src="<%= recipes[i].image%>">
+                  </a>
+                  <img class="post-prof-img" src="<%= recipes[i].user.image%>">
+                </div>
+                <div class="post-details">
+                  <h2>
+                    <%= recipes[i].title %>
+                  </h2>
+                  <p>
+                    <%= recipes[i].caption %>
+                  </p>
+                  <a class="feed-link text-decoration-none" href="/recipe/<%= recipes[i]._id%>"> View Recipe </a>
+                </div>
+              </div>
+            </li>
+          <% } %>
         </ul>
-    </div>
-  <!-- <div class="row justify-content-center mt-5" id="edamam">
+      </section>
+      <!-- <div class="row justify-content-center mt-5" id="edamam">
     
   </div> -->
-</div>
-</section>
-  </div>  
+    </div>
+    </section>
+    </div>
 
-  <script src="../js/darkmode-normal.js"> </script>  
-<%- include('partials/footer') -%>
+    <script src="../js/darkmode-normal.js"> </script>
+    <%- include('partials/footer') -%>
