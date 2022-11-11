@@ -32,11 +32,11 @@
 
       <!-- Posts -->
 
-      <section class="post-container row justify-content-center mb-5 dm-container">
+      <section class="post-container row justify-content-center mb-5">
         <ul class="row list-unstyled m-0 p-0">
           <% for(var i=0; i<recipes.length; i++) {%>
             <li class="col-12 col-sm-4 mb-2">
-              <div class="rounded shadow">
+              <div class="rounded shadow dm-dark-container">
                 <div class="post-img-container w-100">
                   <a class="feed-link" href="/recipe/<%= recipes[i]._id%>">
                     <img class="post-img w-100 h-100 rounded" src="<%= recipes[i].image%>">
@@ -64,5 +64,4 @@
     </section>
     </div>
 
-    <script src="../js/darkmode-normal.js"> </script>
     <%- include('partials/footer') -%>
