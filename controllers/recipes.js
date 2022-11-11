@@ -16,7 +16,7 @@ module.exports = {
     try {
       const limitNumber = 5; 
       const categories = await Category.find({}).limit(limitNumber);
-      const recipes = await Recipe.find().sort({ createdAt: "desc" }).lean();
+      const recipes = await Recipe.find().sort({ createdAt: "desc" }).populate('user');
 
       res.render("feed.ejs", { recipes: recipes, title:'Vital Cook Book - Recipe Feed', categories : categories });
       
