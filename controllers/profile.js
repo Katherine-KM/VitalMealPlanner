@@ -7,8 +7,9 @@ const User = require("../models/User");
 module.exports = {
   getProfile: async (req, res) => {
     try {
-      const recipes = await Recipe.find({ user: req.user.id });
-      res.render("profile.ejs", { recipes: recipes, user: req.user, title: 'Vital Cook Book - Profile' });
+      const recipes = await Recipe.find({ user: req.user.id }).populate('user');
+      const favRecipes = await Recipe.find({favorites: req.user.id}).sort({ createdAt: "desc" }).populate('user');
+      res.render("profile.ejs", { recipes: recipes, favRecipes: favRecipes, user: req.user, title: 'Vital Cook Book - Profile' });
     } catch (err) {
       console.log(err);
     }

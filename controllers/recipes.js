@@ -24,14 +24,6 @@ module.exports = {
       console.log(err);
     }
   },
-  getFavorites: async (req, res) => {
-    try {
-      const recipes = await Recipe.find({favorites: req.user.id}).sort({ createdAt: "desc" }).lean();
-      res.render("favorites.ejs", { recipes: recipes, title:'Vital Cook Book - Recipe Feed' });
-    } catch (err) {
-      console.log(err);
-    }
-  },
   getRecipe: async (req, res) => {
     try {
       const recipe = await Recipe.findById(req.params.id);
