@@ -9,7 +9,7 @@
 
       <!-- Categories -->
 
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-6 g-2 g-lg g-lg-3 py-4 mb-5">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-6 g-2 g-lg g-lg-3 mb-2">
         <% if(categories !='' ) { %>
           <% categories.forEach(function(category,index) { %>
             <a href="/categories/<%- category.name%>" class="col text-center category__link">
@@ -35,22 +35,22 @@
       <section class="post-container row justify-content-center mb-5">
         <ul class="row list-unstyled m-0 p-0">
           <% for(var i=0; i<recipes.length; i++) {%>
-            <li class="col-12 col-sm-4 mb-2">
-              <div class="rounded shadow dm-dark-container">
-                <div class="post-img-container w-100">
+            <li class="col-12 col-md-6 col-lg-4 mb-2 mt-3">
+              <div class="recipe-card rounded shadow dm-dark-container">
+                <div class="post-img-container">
                   <a class="feed-link" href="/recipe/<%= recipes[i]._id%>">
-                    <img class="post-img w-100 h-100 rounded" src="<%= recipes[i].image%>">
+                    <img class="post-img rounded" src="<%= recipes[i].image%>">
                   </a>
                   <img class="post-prof-img" src="<%= recipes[i].user.image%>">
                 </div>
                 <div class="post-details">
-                  <h2>
+                  <h2 class="recipe-title h4" >
                     <%= recipes[i].title %>
                   </h2>
-                  <p>
+                  <p class="recipe-desc h6">
                     <%= recipes[i].caption %>
                   </p>
-                  <a class="feed-link text-decoration-none" href="/recipe/<%= recipes[i]._id%>"> View Recipe </a>
+                  <a class="feed-link text-decoration-none h5 d-block" href="/recipe/<%= recipes[i]._id%>"> View Recipe </a>
                 </div>
               </div>
             </li>
@@ -60,8 +60,6 @@
       <!-- <div class="row justify-content-center mt-5" id="edamam">
     
   </div> -->
-    </div>
-    </section>
     </div>
 
     <%- include('partials/footer') -%>

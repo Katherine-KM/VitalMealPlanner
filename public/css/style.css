@@ -223,18 +223,32 @@ fieldset div {
 }
 
 /* Recipe cards for feed */
-.post-img-container { 
-    height: 250px;  
+.recipe-card {
+    height: 450px; 
+    overflow:hidden; 
+}
+
+@media (min-width: 400px) { 
+    .recipe-card{
+        height: 400px; 
+    }    
+}
+
+.post-img-container {
+    width: 100%;
+    height: 55%; 
 }
 
 .post-img {
+    width: 100%; 
+    height: 95%; 
     object-fit:cover;
 }
 
 .post-prof-img {
     position: relative;
     top: -30px; 
-    left: 50px; 
+    left: 30px; 
     height: 60px; 
     width: 60px; 
     border-radius: 50%;
@@ -242,7 +256,11 @@ fieldset div {
 }
 
 .post-details {
-    padding: 15px; 
+    padding: 25px 15px 15px 15px;  
+}
+
+.recipe-desc {
+    letter-spacing: 1px;
 }
 
 .feed-link {
