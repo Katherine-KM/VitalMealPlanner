@@ -1,16 +1,20 @@
 <%- include('partials/header-signed-in') -%>
-<div class="container">
-  <div class="row mt-5 justify-content-center">
-      <div class="col-10">
+
+  <body class="d-flex flex-column min-vh-100">
+    <div class="container">
+      <div class="row mt-5 justify-content-center">
+        <div class="col-10">
 
           <div class="col-3 mx-auto text-center">
-              <p><strong>User Name</strong>: <%= user.userName %></p>
-              <p><strong>Email</strong>: <%= user.email %></p>
+            <p><strong>User Name</strong>: <%= user.userName %>
+            </p>
+            <p><strong>Email</strong>: <%= user.email %>
+            </p>
           </div>
 
           <div class="row mt-5 col-3 mx-auto">
             <a class="btn btn-primary" href="/feed">Return to Feed</a>
-          </div>  
+          </div>
 
           <!-- Create Recipe Form -->
 
@@ -19,8 +23,8 @@
             <form action="/recipe/createRecipe" enctype="multipart/form-data" method="POST">
 
               <div class="mb-3">
-                  <label for="title" class="form-label">Title</label>
-                  <input type="text" class="form-control" id="title" name="title">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="title">
               </div>
 
               <div class="mb-3">
@@ -54,7 +58,7 @@
                   </div>
                 </div>
               </div>
-              
+
               <div class="col-12">
                 <button type="button" class="btn btn-outline-dark" id="add-direction-btn">+ Direction</button>
               </div>
@@ -123,7 +127,7 @@
                     <label for="holiday">Snacks</label>
                   </div>
 
-                </fieldset>                              
+                </fieldset>
               </div>
 
               <button type="submit" class="btn btn-primary mb-3" value="Upload">Submit</button>
@@ -131,8 +135,8 @@
             </form>
           </div>
         </div>
-      </div>  
+      </div>
     </div>
-  </div>
-</div>
-<%- include('partials/footer') -%>
+    </div>
+    </div>
+    <%- include('partials/footer') -%>

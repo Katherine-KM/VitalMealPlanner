@@ -1,43 +1,40 @@
 <%- include('partials/header-default') -%>
-<body class="login-body d-flex flex-column min-vh-100">
-  <main class="main-login-container container rounded col-11 col-md-10 col-lg-8 col-xl-6 mt-5 dm-dark-container">
-    <div class="login-hero-content-container row justify-content-center col-11 col-lg-8 m-auto">
-      <h2 class="row justify-content-center mt-5 mb-3"> Member Login </h2>
-      <section class="login-form-content-container col-10 mt-2 mb-5">
-        <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
-        <div class="alert alert-danger"><%= el.msg %></div>
-        <% }) %> <% } %> <% if (locals.messages.info) { %> <%
-        messages.info.forEach( el => { %>
-        <div class="alert alert-info"><%= el.msg %></div>
-        <% }) %> <% } %>
-        <form action="/login" method="POST" class="login-form">
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label"
-              >Email address</label
-            >
-            <input
-              type="email"
-              class="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              name="email"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input
-              type="password"
-              class="form-control"
-              id="exampleInputPassword1"
-              name="password"
-            />
-          </div>
-          <div class="login-button-div container row justify-content-center">
-          <button type="submit" class="btn-lg btn-primary col-12 col-md-8 col-lg-6">Submit</button>
-          </div>
-        </form>
-      </section>
-    </div>
-  </main>
 
-<%- include('partials/footer') -%>
+  <body class="login-body d-flex flex-column min-vh-100">
+    <main class="main-login-container container rounded col-11 col-md-10 col-lg-8 col-xl-6 mt-5 dm-dark-container">
+      <div class="login-hero-content-container row justify-content-center col-11 col-lg-8 m-auto">
+        <h2 class="row justify-content-center mt-5 mb-3"> Member Login </h2>
+        <section class="login-form-content-container col-10 mt-2 mb-5">
+          <% if (locals.messages.errors) { %>
+            <% messages.errors.forEach( el=> { %>
+              <div class="alert alert-danger">
+                <%= el.msg %>
+              </div>
+              <% }) %>
+                <% } %>
+                  <% if (locals.messages.info) { %>
+                    <% messages.info.forEach( el=> { %>
+                      <div class="alert alert-info">
+                        <%= el.msg %>
+                      </div>
+                      <% }) %>
+                        <% } %>
+                          <form action="/login" method="POST" class="login-form">
+                            <div class="mb-3">
+                              <label for="exampleInputEmail1" class="form-label">Email address</label>
+                              <input type="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" name="email" />
+                            </div>
+                            <div class="mb-3">
+                              <label for="exampleInputPassword1" class="form-label">Password</label>
+                              <input type="password" class="form-control" id="exampleInputPassword1" name="password" />
+                            </div>
+                            <div class="login-button-div container row justify-content-center">
+                              <button type="submit" class="btn-lg btn-primary col-12 col-md-8 col-lg-6">Submit</button>
+                            </div>
+                          </form>
+        </section>
+      </div>
+    </main>
+
+    <%- include('partials/footer') -%>

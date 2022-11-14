@@ -1,17 +1,18 @@
 <%- include('partials/header-signed-in') -%>
-<body class="d-flex flex-column min-vh-100">
 
-<div class="container">
-    <div class="row justify-content-center mt-5">
-        <ul class="row list-unstyled">
-            <% for(let i = 0; i <recipes.length; i++) {%>
-                <li class="col-6 justify-content-between mt-5">
-                    <a href="/recipe/<%= recipes[i]._id%>">
-                        <img class="img-fluid" src="<%= recipes[i].image%>" alt="recipes[i].title">
-                    </a>
-                </li>    
-            <% } %>
-        </ul>
-    </div>
-</div>
-<%- include('partials/footer') -%>
+    <body class="d-flex flex-column min-vh-100">
+
+        <div class="container">
+            <div class="row justify-content-center mt-5">
+                <ul class="row list-unstyled">
+                    <% for(let i=0; i <recipes.length; i++) {%>
+                        <li class="col-6 justify-content-between mt-5">
+                            <a href="/recipe/<%= recipes[i]._id%>">
+                                <img class="img-fluid" src="<%= recipes[i].image%>" alt="recipes[i].title">
+                            </a>
+                        </li>
+                        <% } %>
+                </ul>
+            </div>
+        </div>
+        <%- include('partials/footer') -%>

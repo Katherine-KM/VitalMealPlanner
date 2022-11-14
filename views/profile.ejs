@@ -1,24 +1,25 @@
 <%- include('partials/header-signed-in') -%>
 
+    <body class="d-flex flex-column min-vh-100">
 
-<div class="container-xxl">
-    <div class="col-5"> <img class="img-fluid" src="<%= user.image %>" alt="Profile Image"> </div>
-    <ul class="row list-unstyled">
-        <% for(let i = 0; i < recipes.length; i++) { %>
-            <li class="col-3 mt-5 justify-content-between">
-                <a href="/recipe/<%= recipes[i].id %>">
-                    <img class="img-fluid" src="<%= recipes[i].image %>" alt="<%= recipes[i].name %>">
-                </a>
-            </li>
-        <% } %>
-    </ul>
-</div> 
+        <div class="container-xxl">
+            <div class="col-5"> <img class="img-fluid" src="<%= user.image %>" alt="Profile Image"> </div>
+            <ul class="row list-unstyled">
+                <% for(let i=0; i < recipes.length; i++) { %>
+                    <li class="col-3 mt-5 justify-content-between">
+                        <a href="/recipe/<%= recipes[i].id %>">
+                            <img class="img-fluid" src="<%= recipes[i].image %>" alt="<%= recipes[i].name %>">
+                        </a>
+                    </li>
+                    <% } %>
+            </ul>
+        </div>
 
-<form action="/profile/profileimage/<%= user.id %>" enctype="multipart/form-data" method="POST">
-    <div class="mb-3">
-        <label for="imgUpload" class="form-label">Image</label>
-        <input type="file" class="form-control" id="imageUpload" name="file">
-    </div>
-    <button type="submit" class="btn btn-primary mb-3" value="Upload">Submit</button>
-</form>
-<%- include('partials/footer') -%>
+        <form action="/profile/profileimage/<%= user.id %>" enctype="multipart/form-data" method="POST">
+            <div class="mb-3">
+                <label for="imgUpload" class="form-label">Image</label>
+                <input type="file" class="form-control" id="imageUpload" name="file">
+            </div>
+            <button type="submit" class="btn btn-primary mb-3" value="Upload">Submit</button>
+        </form>
+        <%- include('partials/footer') -%>
