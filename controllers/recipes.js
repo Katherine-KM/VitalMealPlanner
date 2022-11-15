@@ -2,6 +2,7 @@ const cloudinary = require("../middleware/cloudinary");
 const Recipe = require("../models/Recipe");
 const Comment = require("../models/Comment");
 const Category = require("../models/Category");
+const User = require("../models/User");
 
 module.exports = {
   getCreateRecipe: async (req, res) => {
@@ -18,7 +19,7 @@ module.exports = {
       const categories = await Category.find({}).limit(limitNumber);
       const recipes = await Recipe.find().sort({ createdAt: "desc" }).populate('user');
 
-      res.render("feed.ejs", { recipes: recipes, title:'Vital Cook Book - Recipe Feed', categories : categories });
+      res.render("feed.ejs", { recipes: recipes, title:'Vital Cook Book - Recipe Feed', categories : categories, user: req.user });
       
     } catch (err) {
       console.log(err);
