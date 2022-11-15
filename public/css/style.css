@@ -191,6 +191,8 @@ fieldset div {
     display: inline-block;
 }
 
+/* Feed */
+
 /* Category Cards for Feed */
 
 .category__link{
@@ -271,6 +273,9 @@ fieldset div {
 .feed-link:hover {
     color: var(--secondary-color);
 }
+
+/* Profile */
+
 
 
 /* Dark Mode Classes */
