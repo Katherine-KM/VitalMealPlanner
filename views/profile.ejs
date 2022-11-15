@@ -8,7 +8,7 @@
                     <img class="bg-img" src="" alt="">
                 </div>
                 <div class="user-prof-img-container">
-                    <img src="<%= user.image %>" alt="Profile Image" class="user-prof-img">
+                    <img src="<%=userProf[0].image%>" alt="Profile Image" class="user-prof-img">
                 </div>
                 <div class="user-details">
                     <div class="username"></div>
@@ -17,8 +17,8 @@
             </section>
             <section class="prof-nav">
                 <ul class="list-unstyled row">
-                    <li class="col-4"><button class="btn btn-primary">My Recipes</button></li>
-                    <li class="col-4"><button class="btn btn-primary">My Favorites</button></li>
+                    <li class="col-4"><button class="btn btn-primary">Recipes</button></li>
+                    <li class="col-4"><button class="btn btn-primary">Favorites</button></li>
                     <li class="col-4"><a href="/favorites" class="prof-nav-link edit-prof-btn btn btn-primary">Edit
                             Profile</a></li>
                 </ul>
@@ -53,7 +53,7 @@
         </div>
 
 
-        <!-- <ul class="row list-unstyled">
+        <ul class="row list-unstyled">
             <% for(let i=0; i < recipes.length; i++) { %>
                 <li class="col-12 col-md-6 col-lg-4 mb-2 mt-3">
                     <div class="recipe-card rounded shadow dm-dark-container">
@@ -95,6 +95,6 @@
                 <input type="file" class="form-control" id="imageUpload" name="file">
             </div>
             <button type="submit" class="btn btn-primary mb-3" value="Upload">Submit</button>
-        </form> -->
+        </form>
 
         <%- include('partials/footer') -%>
