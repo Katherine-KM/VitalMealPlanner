@@ -41,7 +41,7 @@
                   <a class="feed-link" href="/recipe/<%= recipes[i]._id%>">
                     <img class="post-img rounded" src="<%= recipes[i].image%>">
                   </a>
-                  <img class="post-prof-img" src="<%= recipes[i].user.image%>">
+                  <a href="/profile/<%=recipes[i].user.userName%>"><img class="post-prof-img" src="<%= recipes[i].user.image%>"></a>
                 </div>
                 <div class="post-details">
                   <h2 class="recipe-title h4" >
