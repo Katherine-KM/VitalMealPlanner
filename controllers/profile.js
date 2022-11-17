@@ -25,11 +25,16 @@ module.exports = {
         cloudinaryId: result.public_id,
       });
       }
+      if(req.body.displayName != ""){
         await User.updateOne({_id: req.params.id},{
-        displayName: req.body.displayName,
-        profBio: req.body.profBio,
-      });
-      
+          displayName: req.body.displayName,
+        });
+      }
+      if(req.body.profBio != ""){
+        await User.updateOne({_id: req.params.id},{
+          profBio: req.body.profBio,
+        });
+      }
         console.log("Settings Updated");
         res.redirect(`/profile/${req.user.userName}`);
       } catch (err) {
