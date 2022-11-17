@@ -11,45 +11,67 @@
                     <img src="<%=userProf[0].image%>" alt="Profile Image" class="user-prof-img">
                 </div>
                 <div class="user-details">
-                    <div class="username"></div>
-                    <div class="bio"></div>
+                    <div class="displayName"><%=userProf[0].displayName%></div>
+                    <div class="bio"> <%=userProf[0].profBio%></div>
                 </div>
             </section>
             <section class="prof-nav">
                 <ul class="list-unstyled row">
                     <li class="col-4"><button class="btn btn-primary">Recipes</button></li>
                     <li class="col-4"><button class="btn btn-primary">Favorites</button></li>
-                    <li class="col-4"><a href="/favorites" class="prof-nav-link edit-prof-btn btn btn-primary">Edit
-                            Profile</a></li>
+                    <% if(userProf[0].id===user.id){ %>
+                        <!-- Button trigger modal -->
+                    <li class="col-4">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target=".bd-example-modal-lg">
+                            Edit Profile
+                        </button>
+                    </li>
+                        <!-- Modal -->
+                        <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                <div class="modal-content dm-dark-container">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Edit Profile</h5>
+                                        <button type="button" class="close dm-dark-container border-0 h4"
+                                            data-bs-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/profile/editProfile/<%= user.id %>" enctype="multipart/form-data" method="POST" class="d-flex flex-column align-items-center">
+                                            <div class="edit-user-imgs-container position-relative">
+                                                <img class="edit-user-prof-img" src="<%=user.image%>" alt="">
+                                                
+                                                <label for="imageUpload" class="form-label">
+                                                    <i class="fas fa fa-camera icon-btn"></i>
+                                                    <input type="file" class="form-control-file d-none" id="imageUpload" name="file">
+                                                </label>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="mb-3">
+                                                    <label for="displayName" class="form-label">Name</label>
+                                                    <input type="text" class="form-control" id="displayName" name="displayName">
+                                                  </div>
+                                                  <div class="mb-3">
+                                                    <label for="profBio" class="form-label">Bio</label>
+                                                    <textarea class="form-control" id="profBio" name="profBio"></textarea>
+                                                  </div>
+                                            </div> 
+                                            <div class=""> 
+                                            <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+                                            </div> 
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer mb-5 p-0">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
                 </ul>
             </section>
-
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg">
-                Edit Profile
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog"
-                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                    <div class="modal-content dm-dark-container">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Edit Profile</h5>
-                            <button type="button" class="close dm-dark-container border-0 h4" data-bs-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-primary dm-dark-container" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
 
@@ -88,13 +110,5 @@
                     <% } %>
             </ul>
         </div>
-
-        <form action="/profile/profileimage/<%= user.id %>" enctype="multipart/form-data" method="POST">
-            <div class="mb-3">
-                <label for="imgUpload" class="form-label">Image</label>
-                <input type="file" class="form-control" id="imageUpload" name="file">
-            </div>
-            <button type="submit" class="btn btn-primary mb-3" value="Upload">Submit</button>
-        </form>
 
         <%- include('partials/footer') -%>

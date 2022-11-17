@@ -8,7 +8,6 @@ module.exports = {
   getProfile: async (req, res) => {
     try {
       const userProf = await User.find({userName: req.params.userName})
-      console.log(userProf[0].image)
       const recipes = await Recipe.find({userProf}).populate('user');
       const favRecipes = await Recipe.find({favorites: userProf}).sort({ createdAt: "desc" }).populate('user');
       res.render("profile.ejs", { recipes: recipes, favRecipes: favRecipes, user: req.user, userProf: userProf, title: 'Vital Cook Book - Profile' });
@@ -16,16 +15,23 @@ module.exports = {
       console.log(err);
     }
   },
-  addProfileImage: async (req, res) => {
+  editProfile: async (req, res) => {
     try {
       // Upload image to cloudinary
-      const result = await cloudinary.uploader.upload(req.file.path);
-      await User.updateOne({_id: req.params.id},{
+      if(req.file){
+        const result = await cloudinary.uploader.upload(req.file.path);
+        await User.updateOne({_id: req.params.id},{
         image: result.secure_url,
         cloudinaryId: result.public_id,
       });
-        console.log("Image has been added");
-        res.redirect("/profile");
+      }
+        await User.updateOne({_id: req.params.id},{
+        displayName: req.body.displayName,
+        profBio: req.body.profBio,
+      });
+      
+        console.log("Settings Updated");
+        res.redirect(`/profile/${req.user.userName}`);
       } catch (err) {
       console.log(err);
     }
