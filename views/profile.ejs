@@ -2,8 +2,8 @@
 
     <body class="d-flex flex-column min-vh-100">
 
-        <div class="container p-0 rounded mb-5 d-flex justify-content-center">
-            <section class="user-info-container d-flex flex-column align-items-center col-12 col-xl-10 rounded">
+        <div class="container p-0 rounded mb-5 d-flex align-items-center flex-column justify-content-center border border-danger">
+            <section class="user-info-container d-flex flex-column align-items-center col-12 rounded">
                 <div class="bg-img-container rounded mb-3">
                 </div>
                 <div class="user-details-container mb-4 w-100 d-flex flex-column justify-content-center align-items-center">
@@ -19,11 +19,12 @@
                 <!-- Profile Navigation Bar -->
                 <section class="prof-nav w-100 pb-3">
                     <ul class="list-unstyled w-100 row m-0 text-center">
-                        <li class="col-4"><button class="btn btn-outline-primary">Recipes</button></li>
+                        <li class="col-4"><button class="btn btn-outline-primary" data-bs-toggle="recipes"
+                            data-bs-target="user-recipes-container">Recipes</button></li>
                         <li class="col-4"><button class="btn btn-outline-primary">Favorites</button></li>
                         <% if(userProf[0].id===user.id){ %>
 
-                <!-- Settings Button -->
+                            <!-- Settings Button -->
                             <!-- Button trigger modal -->
                         <li class="col-4">
                             <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
@@ -78,43 +79,33 @@
                             </div>
                             <% } %>
             </section>
-        </div>
-
-
-        <ul class="row list-unstyled">
-            <% for(let i=0; i < recipes.length; i++) { %>
-                <li class="col-12 col-md-6 col-lg-4 mb-2 mt-3">
-                    <div class="recipe-card rounded shadow dm-dark-container">
+            
+            <section class="user-recipes-container justify-content-center mb-5">
+                <ul class="list-unstyled m-0 p-0 justify-content-between row">
+                  <% for(var i=0; i<recipes.length; i++) {%>
+                    <li class="col-12 col-md-6 col-lg-4 mb-2 mt-3 g-3">
+                      <div class="recipe-card rounded shadow dm-dark-container">
                         <div class="post-img-container">
-                            <a class="feed-link" href="/recipe/<%= recipes[i]._id%>">
-                                <img class="post-img rounded" src="<%= recipes[i].image%>">
-                            </a>
+                          <a class="feed-link" href="/recipe/<%= recipes[i]._id%>">
+                            <img class="post-img rounded" src="<%= recipes[i].image%>">
+                          </a>
+                          <a href="/profile/<%=recipes[i].user.userName%>"><img class="post-prof-img" src="<%= recipes[i].user.image%>"></a>
                         </div>
                         <div class="post-details">
-                            <h2 class="recipe-title h4">
-                                <%= recipes[i].title %>
-                            </h2>
-                            <p class="recipe-desc h6">
-                                <%= recipes[i].caption %>
-                            </p>
-                            <a class="feed-link text-decoration-none h5 d-block" href="/recipe/<%= recipes[i]._id%>">
-                                View Recipe </a>
+                          <h2 class="recipe-title h4" >
+                            <%= recipes[i].title %>
+                          </h2>
+                          <p class="recipe-desc h6">
+                            <%= recipes[i].caption %>
+                          </p>
+                          <a class="feed-link text-decoration-none h5 d-block" href="/recipe/<%= recipes[i]._id%>"> View Recipe </a>
                         </div>
-                    </div>
-                </li>
-                <% } %>
-        </ul>
-
-        <div class="row justify-content-center mt-5 d-none">
-            <ul class="row list-unstyled">
-                <% for(let i=0; i <favRecipes.length; i++) {%>
-                    <li class="col-6 justify-content-between mt-5">
-                        <a href="/recipe/<%= favRecipes[i]._id%>">
-                            <img class="img-fluid" src="<%= favRecipes[i].image%>" alt="favRecipes[i].title">
-                        </a>
+                      </div>
                     </li>
                     <% } %>
-            </ul>
+                </ul>
+              </section>
+            
         </div>
 
         <%- include('partials/footer') -%>

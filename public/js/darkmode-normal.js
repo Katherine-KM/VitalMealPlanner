@@ -11,7 +11,6 @@ const enableDarkMode = () => {
     localStorage.setItem('darkMode', 'enabled');
     darkModeToggle.classList.remove('fa-moon');
     darkModeToggle.classList.add('fa-sun');
-    console.log('test')
 }
 
 const disableDarkMode = () => {
