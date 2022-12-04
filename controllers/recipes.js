@@ -50,7 +50,7 @@ module.exports = {
         category: req.body.categories,
       });
       console.log("Recipe has been added!");
-      res.redirect("/profile");
+      res.redirect(`/profile/${req.user.userName}`);
     } catch (err) {
       console.log(err);
     }
