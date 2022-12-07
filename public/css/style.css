@@ -4,7 +4,7 @@
     --secondary-color: #04a748;
     --darkmode-grey-color: #2d2d2d;
     --darkmode-dark-color: #1d1d1d;
-    --light: #f8f9fa;
+    --light: #f1f2f3;
     --text-light: rgb(138, 136, 136);
 }
 
@@ -270,6 +270,8 @@ fieldset div {
 
 /* Profile */
 
+/* Settings Tab */
+
 .edit-user-imgs-container {
     height: 125px; 
     width: 125px;
@@ -308,6 +310,48 @@ fieldset div {
     cursor: pointer;
 }
 
+/* Hero Section Prof */
+
+.user-info-container{
+    height: 1000px; 
+    border: 2px solid var(--darkmode-dark-color); 
+    position: relative;
+}
+
+.bg-img-container {
+    height: 25%;
+    width: 100%;
+    background-image: linear-gradient(100deg, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(../imgs/drinks.webp);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.user-prof-img-container {
+    height: 125px; 
+    width: 125px;
+    border: 2px solid var(--darkmode-dark-color)
+}
+
+.prof-nav {
+    border-bottom: 2px solid var(--darkmode-dark-color);
+}
+
+
+.user-details{
+    line-height: 1.6;
+    letter-spacing: 1.2px;
+    max-width: 400px;
+}
+
+.p-bio {
+    word-break: break-word; 
+    white-space: normal;
+}
+
+.user-display-name {
+    font-size: 24px;
+}
 
 /* Dark Mode Classes */
 .darkmode{
@@ -318,6 +362,10 @@ fieldset div {
 .darkmode-dark{
     background-color:var(--darkmode-dark-color);
     color: white;
+}
+
+.darkmode-dark-border{
+    border-color: var(--darkmode-dark-color)
 }
 
 .dark-mode-toggle{

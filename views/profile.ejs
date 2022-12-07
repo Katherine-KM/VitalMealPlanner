@@ -2,75 +2,81 @@
 
     <body class="d-flex flex-column min-vh-100">
 
-        <div class="container">
-            <section class="user-info-container w-100">
-                <div class="bg-img-container">
-                    <img class="bg-img" src="" alt="">
+        <div class="container p-0 rounded mb-5 d-flex justify-content-center">
+            <section class="user-info-container d-flex flex-column align-items-center col-12 col-xl-10 rounded">
+                <div class="bg-img-container rounded mb-3">
                 </div>
-                <div class="user-prof-img-container">
-                    <img src="<%=userProf[0].image%>" alt="Profile Image" class="user-prof-img">
+                <div class="user-details-container mb-4 w-100 d-flex flex-column justify-content-center align-items-center">
+                    <div class="user-prof-img-container rounded-circle mb-2">
+                        <img src="<%=userProf[0].image%>" alt="Profile Image" class="user-prof-img w-100 h-100 rounded-circle">
+                    </div>
+                    <div class="user-details text-center">
+                        <div class="displayName"><h1 class="user-display-name"> <%=userProf[0].displayName%></h1> </div>
+                        <div class="bio"> <p class="m-0 p-bio"> <%=userProf[0].profBio%> </p> </div>
+                    </div>
                 </div>
-                <div class="user-details">
-                    <div class="displayName"><%=userProf[0].displayName%></div>
-                    <div class="bio"> <%=userProf[0].profBio%></div>
-                </div>
-            </section>
-            <section class="prof-nav">
-                <ul class="list-unstyled row">
-                    <li class="col-4"><button class="btn btn-primary">Recipes</button></li>
-                    <li class="col-4"><button class="btn btn-primary">Favorites</button></li>
-                    <% if(userProf[0].id===user.id){ %>
-                        <!-- Button trigger modal -->
-                    <li class="col-4">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target=".bd-example-modal-lg">
-                            Edit Profile
-                        </button>
-                    </li>
-                        <!-- Modal -->
-                        <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog"
-                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                                <div class="modal-content dm-dark-container">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Edit Profile</h5>
-                                        <button type="button" class="close dm-dark-container border-0 h4"
-                                            data-bs-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="/profile/editProfile/<%= user.id %>" enctype="multipart/form-data" method="POST" class="d-flex flex-column align-items-center">
-                                            <div class="edit-user-imgs-container position-relative">
-                                                <img class="edit-user-prof-img" src="<%=user.image%>" alt="">
-                                                
-                                                <label for="imageUpload" class="form-label">
-                                                    <i class="fas fa fa-camera icon-btn"></i>
-                                                    <input type="file" class="form-control-file d-none" id="imageUpload" name="file">
-                                                </label>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="mb-3">
-                                                    <label for="displayName" class="form-label">Name</label>
-                                                    <input type="text" class="form-control" id="displayName" name="displayName">
-                                                  </div>
-                                                  <div class="mb-3">
-                                                    <label for="profBio" class="form-label">Bio</label>
-                                                    <textarea class="form-control" id="profBio" name="profBio"></textarea>
-                                                  </div>
-                                            </div> 
-                                            <div class=""> 
-                                            <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
-                                            </div> 
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer mb-5 p-0">
+
+                <!-- Profile Navigation Bar -->
+                <section class="prof-nav w-100 pb-3">
+                    <ul class="list-unstyled w-100 row m-0 text-center">
+                        <li class="col-4"><button class="btn btn-outline-primary">Recipes</button></li>
+                        <li class="col-4"><button class="btn btn-outline-primary">Favorites</button></li>
+                        <% if(userProf[0].id===user.id){ %>
+
+                <!-- Settings Button -->
+                            <!-- Button trigger modal -->
+                        <li class="col-4">
+                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+                                data-bs-target=".bd-example-modal-lg">
+                                Edit Profile
+                            </button>
+                        </li>
+                    </ul>
+                </section>
+                            <!-- Modal -->
+                            <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                    <div class="modal-content dm-dark-container">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Edit Profile</h5>
+                                            <button type="button" class="close dm-dark-container border-0 h4"
+                                                data-bs-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="/profile/editProfile/<%= user.id %>" enctype="multipart/form-data" method="POST" class="d-flex flex-column align-items-center">
+                                                <div class="edit-user-imgs-container position-relative">
+                                                    <img class="edit-user-prof-img" src="<%=user.image%>" alt="">
+                                                    
+                                                    <label for="imageUpload" class="form-label">
+                                                        <i class="fas fa fa-camera icon-btn"></i>
+                                                        <input type="file" class="form-control-file d-none" id="imageUpload" name="file">
+                                                    </label>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="mb-3">
+                                                        <label for="displayName" class="form-label">Name</label>
+                                                        <input maxlength='25' type="text" class="form-control" id="displayName" placeholder="Display Name" name="displayName">
+                                                      </div>
+                                                      <div class="mb-3">
+                                                        <label for="profBio" class="form-label">Bio</label>
+                                                        <textarea 
+                                                        maxlength='75' class="form-control" id="profBio" name="profBio" placeholder="Max Length Of 75 Chars"></textarea>
+                                                      </div>
+                                                </div> 
+                                                <div class=""> 
+                                                <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+                                                </div> 
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer mb-5 p-0">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <% } %>
-                </ul>
+                            <% } %>
             </section>
         </div>
 
