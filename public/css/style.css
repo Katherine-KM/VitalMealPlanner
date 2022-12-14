@@ -13,6 +13,10 @@ html, body {
     min-height: 100vh;
 }
 
+body {
+    background-color: var(--light);
+}
+
 * {
     margin: 0;
     padding: 0; 
@@ -269,6 +273,11 @@ fieldset div {
 }
 
 /* Profile */
+.main {
+    background-color: white;
+    border: 2px solid white;
+    box-shadow: 0px -2px 5px 0px rgba(32, 32, 32, 0.2);
+}
 
 /* Settings Tab */
 
@@ -362,8 +371,8 @@ fieldset div {
     color: white;
 }
 
-.darkmode-dark-border{
-    border-color: var(--darkmode-dark-color)
+.dm-dark-border{
+    border-color: var(--darkmode-dark-color);
 }
 
 .dark-mode-toggle{
