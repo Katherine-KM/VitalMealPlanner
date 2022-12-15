@@ -1,7 +1,7 @@
 <%- include('partials/header-signed-in') -%>
 
   <body class="d-flex flex-column min-vh-100">
-    <div class="container">
+    <div class="main container p-3 mb-5 dm-container rounded">
       <!-- <form id="recipe-search-form">
       <input type="text" placeholder="Search">
       <button type="submit">Submit</button>
@@ -32,10 +32,10 @@
 
       <!-- Posts -->
 
-      <section class="post-container row justify-content-center mb-5">
+      <section class="post-container row justify-content-center">
         <ul class="row list-unstyled m-0 p-0">
           <% for(var i=0; i<recipes.length; i++) {%>
-            <li class="col-12 col-md-6 col-lg-4 mb-2 mt-3">
+            <li class="col-12 col-md-6 col-lg-4 mt-3">
               <div class="recipe-card rounded shadow dm-dark-container">
                 <div class="post-img-container">
                   <a class="feed-link" href="/recipe/<%= recipes[i]._id%>">
