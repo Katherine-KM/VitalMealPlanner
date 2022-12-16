@@ -7,7 +7,7 @@
                 <div class="bg-img-container rounded mb-3">
                 </div>
                 <div class="user-details-container mb-4 w-100 d-flex flex-column justify-content-center align-items-center">
-                    <div class="user-prof-img-container rounded-circle mb-2">
+                    <div class="user-prof-img-container rounded-circle mb-2 dm-container">
                         <img src="<%=userProf[0].image%>" alt="Profile Image" class="user-prof-img w-100 h-100 rounded-circle">
                     </div>
                     <div class="user-details text-center">
@@ -17,7 +17,7 @@
                 </div>
 
                 <!-- Profile Navigation Bar -->
-                <section class="prof-nav w-100 pb-3">
+                <section class="prof-nav w-100 pb-3 dm-container">
                     <ul class="list-unstyled w-100 row m-0 text-center">
                         <li class="col-4"><button class="btn btn-outline-primary" data-bs-toggle="recipes"
                             data-bs-target="user-recipes-container">Recipes</button></li>
@@ -89,7 +89,7 @@
                           <a class="feed-link" href="/recipe/<%= recipes[i]._id%>">
                             <img class="post-img rounded" src="<%= recipes[i].image%>">
                           </a>
-                          <a href="/profile/<%=recipes[i].user.userName%>"><img class="post-prof-img" src="<%= recipes[i].user.image%>"></a>
+                          <a href="/profile/<%=recipes[i].user.userName%>"><img class="post-prof-img dm-container" src="<%= recipes[i].user.image%>"></a>
                         </div>
                         <div class="post-details">
                           <h2 class="recipe-title h4" >
