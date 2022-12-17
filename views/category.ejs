@@ -2,7 +2,15 @@
 
 
     <body class="d-flex flex-column min-vh-100">
-        <div class="container-xxl row justify-content-center mt-5 mx-auto">
+        <div class="container-xxl row justify-content-center mb-5 mx-auto border border-danger">
+            <h1 class="pb-4 text-center">Explore <%= request %> </h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb d-flex justify-content-center">
+                    <li class="breadcrumb-item"><a href="/feed">Feed</a></li>
+                    <li class="breadcrumb-item"><a href="/categories">Explore Categories</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><%= request %></li>
+                </ol>
+            </nav>
             <ul class="row list-unstyled">
                 <% for(let i=0; i < recipes.length; i++) { %>
                     <div class="col-6">
