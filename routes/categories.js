@@ -1,11 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const upload = require("../middleware/multer");
-const categoryController = require("../controllers/category");
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
+const categoryController = require("../controllers/category");
 
 router.get("/", categoryController.getCategories);
-router.get("/:name", categoryController.getCategoriesByName);
+router.get("/:name", ensureAuth, categoryController.getCategoriesByName);
 
 
 module.exports = router;
