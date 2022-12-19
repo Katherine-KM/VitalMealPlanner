@@ -2,7 +2,7 @@
 
 
     <body class="d-flex flex-column min-vh-100">
-        <div class="container-xxl row justify-content-center mb-5 mx-auto border border-danger">
+        <div class="main container-xxl row justify-content-center mb-5 mx-auto">
             <h1 class="pb-4 text-center">Explore <%= request %> </h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb d-flex justify-content-center">
@@ -11,14 +11,31 @@
                     <li class="breadcrumb-item active" aria-current="page"><%= request %></li>
                 </ol>
             </nav>
-            <ul class="row list-unstyled">
-                <% for(let i=0; i < recipes.length; i++) { %>
-                    <div class="col-6">
-                        <li class="col-12 justify-content-between mt-5"> <a href="/recipe/<%= recipes[i]._id %>"><img
-                                    class="img-fluid" src="<%= recipes[i].image %>" alt="recipes[i].title"> </a> </li>
-                    </div>
+            <section class="post-container row justify-content-center">
+                <ul class="row list-unstyled m-0 p-0">
+                  <% for(var i=0; i<recipes.length; i++) {%>
+                    <li class="col-12 col-md-6 col-lg-4 mt-3 mb-2">
+                      <div class="recipe-card rounded shadow dm-dark-container">
+                        <div class="post-img-container">
+                          <a class="feed-link" href="/recipe/<%= recipes[i]._id%>">
+                            <img class="post-img rounded" src="<%= recipes[i].image%>">
+                          </a>
+                          <a href="/profile/<%=recipes[i].user.userName%>"><img class="post-prof-img dm-container" src="<%= recipes[i].user.image%>"></a>
+                        </div>
+                        <div class="post-details">
+                          <h2 class="recipe-title h4" >
+                            <%= recipes[i].title %>
+                          </h2>
+                          <p class="recipe-desc h6">
+                            <%= recipes[i].caption %>
+                          </p>
+                          <a class="feed-link text-decoration-none h5 d-block" href="/recipe/<%= recipes[i]._id%>"> View Recipe </a>
+                        </div>
+                      </div>
+                    </li>
                     <% } %>
-            </ul>
+                </ul>
+              </section>
         </div>
 
 

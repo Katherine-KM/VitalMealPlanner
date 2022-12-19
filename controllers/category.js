@@ -16,7 +16,7 @@ module.exports = {
     getCategoriesByName: async (req, res) => {
       try {
         const request = req.params.name; 
-        const recipes = await Recipe.find({category: req.params.name})
+        const recipes = await Recipe.find({category: req.params.name}).populate('user')
         res.render("category.ejs", {recipes : recipes, title: `Vital CookBook - ${req.params.name}`, user: req.user, request: request})
       } catch(err){
         console.log(err);
