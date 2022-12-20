@@ -13,8 +13,8 @@ html, body {
     min-height: 100vh;
 }
 
-body {
-    background-color: var(--light);
+.w-bg {
+    background: url(../imgs/i-like-food.svg) repeat !important;
 }
 
 * {
@@ -370,19 +370,42 @@ fieldset div {
     font-size: 24px;
 }
 
+/* Create Recipe page */
+.card h1 {
+    font-size: 30px;
+}
+.tags {
+    font-size: 24px;
+}
+
+.copy:hover, .remove-all-tags:hover{
+    cursor: pointer; 
+}
+
+input[type="text"], textarea {
+
+    background-color : rgba(201, 201, 201, 0.2) !important; 
+  
+}
+
+input[type=text]:focus, textarea:focus{
+    outline: 2px solid var(--primary-color)!important; 
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(0, 200, 83, 0.5) !important;
+  }
+
 /* Dark Mode Classes */
 .darkmode{
-    background-color: var(--darkmode-grey-color);
+    background-color: var(--darkmode-grey-color)!important;
     color: white; 
 }
 
 .darkmode-dark{
-    background-color:var(--darkmode-dark-color);
+    background-color:var(--darkmode-dark-color) !important;
     color: white;
 }
 
 .dm-dark-border{
-    border-color: var(--darkmode-dark-color);
+    border-color: var(--darkmode-dark-color) !important;
 }
 
 .dark-mode-toggle{

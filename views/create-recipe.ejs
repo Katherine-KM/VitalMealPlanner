@@ -1,32 +1,19 @@
 <%- include('partials/header-signed-in') -%>
 
-  <body class="d-flex flex-column min-vh-100">
-    <div class="container">
-      <div class="row mt-5 justify-content-center">
-        <div class="col-10">
+  <body class="d-flex flex-column min-vh-100 w-bg">
+    <div class="container main mb-5 dm-dark-container rounded">
+      <div class="container d-flex flex-column col-10 mb-4">
+        <!-- Create Recipe Form -->
 
-          <div class="col-3 mx-auto text-center">
-            <p><strong>User Name</strong>: <%= user.userName %>
-            </p>
-            <p><strong>Email</strong>: <%= user.email %>
-            </p>
-          </div>
-
-          <div class="row mt-5 col-3 mx-auto">
-            <a class="btn btn-primary" href="/feed">Return to Feed</a>
-          </div>
-
-          <!-- Create Recipe Form -->
-
-          <div class="mt-5">
-            <h2>Create A Recipe</h2>
-            <form action="/recipe/createRecipe" enctype="multipart/form-data" method="POST">
-
+        <div class="mt-5 mb-5">
+          <h2 class="text-center mb-4">Create A Recipe</h2>
+          <form action="/recipe/createRecipe" enctype="multipart/form-data" method="POST" class="d-flex justify-content-around g-1">
+            <section class="form-section-1 col-5">
               <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" class="form-control" id="title" name="title">
               </div>
-
+  
               <div class="mb-3">
                 <label for="caption" class="form-label">Description</label>
                 <textarea class="form-control" id="caption" name="caption"></textarea>
@@ -37,7 +24,122 @@
                 <input type="file" class="form-control" id="imageUpload" name="file">
               </div>
 
-              <div class="mb-3">
+              <div class="card dm-container">
+                <div class="card-header d-inline-block d-flex justify-content-between align-items-center">
+                  <h1 class="d-inline-block"><i class="fas fa-tags tags"></i>Ingredients</h1>
+                  <div>
+                    <span class="copy tags" data-toggle="tooltip" data-placement="bottom" title="Copy all tags"><i class="fas fa-copy"></i></span>
+                    <span class="remove-all-tags tags" data-toggle="tooltip" data-placement="bottom"
+                      title="Delete all tags">&times</span>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <p> Use <strong> Comma (,) </strong> or <strong> press Enter ( &ldca; ) to separate tags. </strong> </p>
+                  <div class="tags">
+                    <span class="tag">User<span class="remove-tag">&times;</span></span>
+                    <input type="text" placeholder="Add Tags">
+                  </div>
+                </div>
+                <div class="card-footer"></div>
+              </div>
+            </section>
+            <section class="section2 col-5">
+            <div class="mb-3">
+              <label for="directions" class="form-label">Directions</label>
+              <div class="direction-list">
+                <div class="direction-div mb-1">
+                  <input name="directions" type="text" id="add-direction-input">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <button type="button" class="btn btn-outline-dark" id="add-direction-btn">+ Direction</button>
+            </div>
+
+            <div class="mb-3">
+              <legend>Recipe Type (Choose as many that applies):</legend>
+              <fieldset>
+
+                <div class="col-5 col-sm-3">
+                  <input type="checkbox" name="categories" value="Breakfast">
+                  <label for="Breakfast">Breakfast</label>
+                </div>
+
+                <div class="col-5 col-sm-3">
+                  <input type="checkbox" name="categories" value="Lunch">
+                  <label for="Lunch">Lunch</label>
+                </div>
+
+                <div class="col-5 col-sm-3">
+                  <input type="checkbox" name="categories" value="Dinner">
+                  <label for="Dinner">Dinner</label>
+                </div>
+
+                <div class="col-5 col-sm-3">
+                  <input type="checkbox" name="categories" value="Appetizer">
+                  <label for="Appetizer">Appetizer</label>
+                </div>
+
+                <div class="col-5 col-sm-3">
+                  <input type="checkbox" name="categories" value="Side-Dish">
+                  <label for="Side-Dish">Side-Dish</label>
+                </div>
+
+                <div class="col-5 col-sm-3">
+                  <input type="checkbox" name="categories" value="Salad">
+                  <label for="Salad">Salad</label>
+                </div>
+
+                <div class="col-5 col-sm-3">
+                  <input type="checkbox" name="categories" value="Soup">
+                  <label for="Soup">Soup</label>
+                </div>
+
+                <div class="col-5 col-sm-3">
+                  <input type="checkbox" name="categories" value="Dessert">
+                  <label for="Dessert">Dessert</label>
+                </div>
+
+                <div class="col-5 col-sm-3">
+                  <input type="checkbox" name="categories" value="Alcohol">
+                  <label for="Alcohol">Alcohol</label>
+                </div>
+
+                <div class="col-5 col-sm-3">
+                  <input type="checkbox" name="categories" value="Drinks">
+                  <label for="Drinks">Drinks</label>
+                </div>
+
+                <div class="col-5 col-sm-3">
+                  <input type="checkbox" name="categories" value="Holiday">
+                  <label for="Holiday">Holiday</label>
+                </div>
+
+                <div class="col-5 col-sm-3">
+                  <input type="checkbox" name="categories" value="Snacks">
+                  <label for="Snacks">Snacks</label>
+                </div>
+
+              </fieldset>
+            </section>
+            <!-- <div class="card mb-3">
+              <div class="card-header d-flex align-items-center justify-content-around">
+                <h1 class="d-inline-block"><i class="fas fa-tags tags"></i>Tags</h1>
+                <div class="d-inline-block">
+                  <span class="copy" data-toggle="tooltip" data-placement="bottom" title="Copy all tags"><i
+                      class="fas fa-copy"></i></span>
+                  <span class="remove-all-tags" data-toggle="tooltip" data-placement="bottom"
+                    title="Delete all tags">&times</span>
+                </div>
+              </div>
+              <div class="card-body">
+                <p>Press <strong> Enter ( &ldca; )</strong> or Use <strong> Comma ( , ) </strong> to separate tags. </p>
+              </div>
+              <div class="card-footer"></div>
+            </div> -->
+
+            <!-- <div class="mb-3">
                 <label for="ingredients" class="form-label">Ingredients</label>
                 <div class="ingredient-list">
                   <div class="ingredient-div mb-1">
@@ -48,95 +150,13 @@
 
               <div class="col-12">
                 <button type="button" class="btn btn-outline-dark" id="add-ingredient-btn">+ Ingredient</button>
-              </div>
+              </div> -->
+            </div>
 
-              <div class="mb-3">
-                <label for="directions" class="form-label">Directions</label>
-                <div class="direction-list">
-                  <div class="direction-div mb-1">
-                    <input name="directions" type="text" id="add-direction-input">
-                  </div>
-                </div>
-              </div>
+            <button type="submit" class="btn btn-primary col-lg-2 mx-auto mb-2" value="Upload">Submit</button>
 
-              <div class="col-12">
-                <button type="button" class="btn btn-outline-dark" id="add-direction-btn">+ Direction</button>
-              </div>
-
-              <div class="mb-3">
-                <legend>Recipe Type (Choose as many that applies):</legend>
-                <fieldset>
-
-                  <div class="col-5 col-sm-3">
-                    <input type="checkbox" name="categories" value="Breakfast">
-                    <label for="Breakfast">Breakfast</label>
-                  </div>
-
-                  <div class="col-5 col-sm-3">
-                    <input type="checkbox" name="categories" value="Lunch">
-                    <label for="Lunch">Lunch</label>
-                  </div>
-
-                  <div class="col-5 col-sm-3">
-                    <input type="checkbox" name="categories" value="Dinner">
-                    <label for="Dinner">Dinner</label>
-                  </div>
-
-                  <div class="col-5 col-sm-3">
-                    <input type="checkbox" name="categories" value="Appetizer">
-                    <label for="Appetizer">Appetizer</label>
-                  </div>
-
-                  <div class="col-5 col-sm-3">
-                    <input type="checkbox" name="categories" value="Side-Dish">
-                    <label for="Side-Dish">Side-Dish</label>
-                  </div>
-
-                  <div class="col-5 col-sm-3">
-                    <input type="checkbox" name="categories" value="Salad">
-                    <label for="Salad">Salad</label>
-                  </div>
-
-                  <div class="col-5 col-sm-3">
-                    <input type="checkbox" name="categories" value="Soup">
-                    <label for="Soup">Soup</label>
-                  </div>
-
-                  <div class="col-5 col-sm-3">
-                    <input type="checkbox" name="categories" value="Dessert">
-                    <label for="Dessert">Dessert</label>
-                  </div>
-
-                  <div class="col-5 col-sm-3">
-                    <input type="checkbox" name="categories" value="Alcohol">
-                    <label for="Alcohol">Alcohol</label>
-                  </div>
-
-                  <div class="col-5 col-sm-3">
-                    <input type="checkbox" name="categories" value="Drinks">
-                    <label for="Drinks">Drinks</label>
-                  </div>
-
-                  <div class="col-5 col-sm-3">
-                    <input type="checkbox" name="categories" value="Holiday">
-                    <label for="Holiday">Holiday</label>
-                  </div>
-
-                  <div class="col-5 col-sm-3">
-                    <input type="checkbox" name="categories" value="Snacks">
-                    <label for="Snacks">Snacks</label>
-                  </div>
-
-                </fieldset>
-              </div>
-
-              <button type="submit" class="btn btn-primary mb-3" value="Upload">Submit</button>
-
-            </form>
-          </div>
+          </form>
         </div>
       </div>
-    </div>
-    </div>
     </div>
     <%- include('partials/footer') -%>

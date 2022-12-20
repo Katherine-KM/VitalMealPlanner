@@ -7,6 +7,7 @@ const enableDarkMode = () => {
     document.body.classList.add('darkmode');
     [].forEach.call(dmDarkContainer, function(mySingleDiv) {
         mySingleDiv.classList.add('darkmode-dark');
+        mySingleDiv.classList.add('dm-dark-border');
     }); 
     [].forEach.call(dmContainer, function(mySingleDiv) {
         mySingleDiv.classList.add('dm-dark-border');
@@ -21,6 +22,7 @@ const disableDarkMode = () => {
     document.body.classList.remove('darkmode');
     [].forEach.call(dmDarkContainer, function(mySingleDiv) {
         mySingleDiv.classList.remove('darkmode-dark');
+        mySingleDiv.classList.remove('dm-dark-border');
     }); 
     [].forEach.call(dmContainer, function(mySingleDiv) {
         mySingleDiv.classList.remove('dm-dark-border');
