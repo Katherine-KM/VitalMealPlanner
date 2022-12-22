@@ -376,6 +376,7 @@ fieldset div {
 }
 .tags {
     font-size: 24px;
+    display: inline-block;
 }
 
 .copy:hover, .remove-all-tags:hover{

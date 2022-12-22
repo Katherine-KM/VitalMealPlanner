@@ -2,13 +2,13 @@
 
   <body class="d-flex flex-column min-vh-100 w-bg">
     <div class="container main mb-5 dm-dark-container rounded">
-      <div class="container d-flex flex-column col-10 mb-4">
+      <div class="container d-flex flex-column col-12 col-md-10 mb-4">
         <!-- Create Recipe Form -->
 
         <div class="mt-5 mb-5">
           <h2 class="text-center mb-4">Create A Recipe</h2>
-          <form action="/recipe/createRecipe" enctype="multipart/form-data" method="POST" class="d-flex justify-content-around g-1">
-            <section class="form-section-1 col-5">
+          <form action="/recipe/createRecipe" enctype="multipart/form-data" method="POST" class="d-flex justify-content-around g-1 flex-wrap">
+            <section class="form-section-1 col-10 col-lg-5">
               <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" class="form-control" id="title" name="title">
@@ -26,9 +26,11 @@
 
               <div class="card dm-container">
                 <div class="card-header d-inline-block d-flex justify-content-between align-items-center">
-                  <h1 class="d-inline-block"><i class="fas fa-tags tags"></i>Ingredients</h1>
+                  <div> 
+                  <i class="fas fa-tags tags me-1"></i><h1 class="d-inline-block">Ingredients</h1>
+                  </div>
                   <div>
-                    <span class="copy tags" data-toggle="tooltip" data-placement="bottom" title="Copy all tags"><i class="fas fa-copy"></i></span>
+                    <span class="copy tags me-1" data-toggle="tooltip" data-placement="bottom" title="Copy all tags"><i class="fas fa-copy"></i></span>
                     <span class="remove-all-tags tags" data-toggle="tooltip" data-placement="bottom"
                       title="Delete all tags">&times</span>
                   </div>
@@ -43,7 +45,7 @@
                 <div class="card-footer"></div>
               </div>
             </section>
-            <section class="section2 col-5">
+            <section class="section2 col-10 col-lg-5">
             <div class="mb-3">
               <label for="directions" class="form-label">Directions</label>
               <div class="direction-list">
