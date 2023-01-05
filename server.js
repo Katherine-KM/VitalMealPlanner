@@ -63,6 +63,6 @@ app.use("/profile", profileRoutes);
 
 //Server Running
 const PORT = 3000; 
-app.listen(PORT || 3000, () => {
+app.listen(process.env.PORT || PORT, () => {
   console.log("Server is running, you better catch it!");
 });
