@@ -62,6 +62,6 @@ app.use("/categories", categoryRoutes);
 app.use("/profile", profileRoutes);
 
 //Server Running
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 2000, () => {
   console.log("Server is running, you better catch it!");
 });
