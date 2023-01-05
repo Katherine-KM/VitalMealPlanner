@@ -62,6 +62,7 @@ app.use("/categories", categoryRoutes);
 app.use("/profile", profileRoutes);
 
 //Server Running
-app.listen(PORT || 2000, () => {
+const PORT = 3000; 
+app.listen(PORT || 3000, () => {
   console.log("Server is running, you better catch it!");
 });
