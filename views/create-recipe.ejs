@@ -7,158 +7,90 @@
 
         <div class="mt-5 mb-5">
           <h2 class="text-center mb-4">Create A Recipe</h2>
-          <form action="/recipe/createRecipe" enctype="multipart/form-data" method="POST" class="d-flex justify-content-around g-1 flex-wrap">
+          <form action="/recipe/createRecipe" enctype="multipart/form-data" method="POST"
+            class="d-flex justify-content-around g-1 flex-wrap">
             <section class="form-section-1 col-10 col-lg-5">
               <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" id="title" name="title">
+                <input type="text" class="form-control dm-container" id="title" name="title">
               </div>
-  
+
               <div class="mb-3">
                 <label for="caption" class="form-label">Description</label>
-                <textarea class="form-control" id="caption" name="caption"></textarea>
+                <textarea class="form-control dm-container" id="caption" name="caption"></textarea>
               </div>
 
               <div class="mb-3">
                 <label for="imageUpload" class="form-label">Image</label>
-                <input type="file" class="form-control" id="imageUpload" name="file">
+                <input type="file" class="form-control dm-container" id="imageUpload" name="file">
               </div>
 
-              <div class="card dm-container">
-                <div class="card-header d-inline-block d-flex justify-content-between align-items-center">
-                  <div> 
-                  <i class="fas fa-tags tags me-1"></i><h1 class="d-inline-block">Ingredients</h1>
-                  </div>
-                  <div>
-                    <span class="copy tags me-1" data-toggle="tooltip" data-placement="bottom" title="Copy all tags"><i class="fas fa-copy"></i></span>
-                    <span class="remove-all-tags tags" data-toggle="tooltip" data-placement="bottom"
-                      title="Delete all tags">&times</span>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <p> Use <strong> Comma (,) </strong> or <strong> press Enter ( &ldca; ) to separate tags. </strong> </p>
-                  <div class="tags">
-                    <span class="tag">User<span class="remove-tag">&times;</span></span>
-                    <input type="text" placeholder="Add Tags">
-                  </div>
-                </div>
-                <div class="card-footer"></div>
-              </div>
-            </section>
-            <section class="section2 col-10 col-lg-5">
-            <div class="mb-3">
-              <label for="directions" class="form-label">Directions</label>
-              <div class="direction-list">
-                <div class="direction-div mb-1">
-                  <input name="directions" type="text" id="add-direction-input">
-                </div>
-              </div>
-            </div>
-
-            <div class="col-12">
-              <button type="button" class="btn btn-outline-dark" id="add-direction-btn">+ Direction</button>
-            </div>
-
-            <div class="mb-3">
-              <legend>Recipe Type (Choose as many that applies):</legend>
-              <fieldset>
-
-                <div class="col-5 col-sm-3">
-                  <input type="checkbox" name="categories" value="Breakfast">
-                  <label for="Breakfast">Breakfast</label>
-                </div>
-
-                <div class="col-5 col-sm-3">
-                  <input type="checkbox" name="categories" value="Lunch">
-                  <label for="Lunch">Lunch</label>
-                </div>
-
-                <div class="col-5 col-sm-3">
-                  <input type="checkbox" name="categories" value="Dinner">
-                  <label for="Dinner">Dinner</label>
-                </div>
-
-                <div class="col-5 col-sm-3">
-                  <input type="checkbox" name="categories" value="Appetizer">
-                  <label for="Appetizer">Appetizer</label>
-                </div>
-
-                <div class="col-5 col-sm-3">
-                  <input type="checkbox" name="categories" value="Side-Dish">
-                  <label for="Side-Dish">Side-Dish</label>
-                </div>
-
-                <div class="col-5 col-sm-3">
-                  <input type="checkbox" name="categories" value="Salad">
-                  <label for="Salad">Salad</label>
-                </div>
-
-                <div class="col-5 col-sm-3">
-                  <input type="checkbox" name="categories" value="Soup">
-                  <label for="Soup">Soup</label>
-                </div>
-
-                <div class="col-5 col-sm-3">
-                  <input type="checkbox" name="categories" value="Dessert">
-                  <label for="Dessert">Dessert</label>
-                </div>
-
-                <div class="col-5 col-sm-3">
-                  <input type="checkbox" name="categories" value="Alcohol">
-                  <label for="Alcohol">Alcohol</label>
-                </div>
-
-                <div class="col-5 col-sm-3">
-                  <input type="checkbox" name="categories" value="Drinks">
-                  <label for="Drinks">Drinks</label>
-                </div>
-
-                <div class="col-5 col-sm-3">
-                  <input type="checkbox" name="categories" value="Holiday">
-                  <label for="Holiday">Holiday</label>
-                </div>
-
-                <div class="col-5 col-sm-3">
-                  <input type="checkbox" name="categories" value="Snacks">
-                  <label for="Snacks">Snacks</label>
-                </div>
-
-              </fieldset>
-            </section>
-            <!-- <div class="card mb-3">
-              <div class="card-header d-flex align-items-center justify-content-around">
-                <h1 class="d-inline-block"><i class="fas fa-tags tags"></i>Tags</h1>
-                <div class="d-inline-block">
-                  <span class="copy" data-toggle="tooltip" data-placement="bottom" title="Copy all tags"><i
-                      class="fas fa-copy"></i></span>
-                  <span class="remove-all-tags" data-toggle="tooltip" data-placement="bottom"
-                    title="Delete all tags">&times</span>
-                </div>
-              </div>
-              <div class="card-body">
-                <p>Press <strong> Enter ( &ldca; )</strong> or Use <strong> Comma ( , ) </strong> to separate tags. </p>
-              </div>
-              <div class="card-footer"></div>
-            </div> -->
-
-            <!-- <div class="mb-3">
-                <label for="ingredients" class="form-label">Ingredients</label>
+              <div class="mb-3">
+                <label for="Ingredients" class="form-label">Ingredients</label>
                 <div class="ingredient-list">
                   <div class="ingredient-div mb-1">
-                    <input name="ingredients" type="text" id="add-ingredient-input">
+                    <textarea name="ingredients" class='add-ingredient-input dm-container' oninput="auto_grow(this)"
+                      rows="1"></textarea>
+                    <button class="btn btn-outline-primary mx-2 fa fa-trash d-trash"
+                      onclick="removeIngredient(this)"></button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <button type="button" class="btn btn-outline-primary mb-2" id="add-ingredient-btn">+ Ingredient</button>
+              </div>
+
+              <div class="mb-3">
+                <label for="directions" class="form-label">Directions</label>
+                <div class="direction-list">
+                  <div class="direction-div mb-1">
+                    <textarea name="directions" class='add-direction-input dm-container' oninput="auto_grow(this)"
+                      rows="1"></textarea>
+                    <button class="btn btn-outline-primary mx-2 fa fa-trash d-trash"
+                      onclick="removeDirection(this)"></button>
                   </div>
                 </div>
               </div>
 
               <div class="col-12">
-                <button type="button" class="btn btn-outline-dark" id="add-ingredient-btn">+ Ingredient</button>
-              </div> -->
-            </div>
+                <button type="button" class="btn btn-outline-primary" id="add-direction-btn">+ Direction</button>
+              </div>
+            </section>
+            <section class="section2 col-10 col-lg-5">
 
-            <button type="submit" class="btn btn-primary col-lg-2 mx-auto mb-2" value="Upload">Submit</button>
-
-          </form>
+              <div class="mb-3">
+                <legend>Recipe Type (Max: 10):</legend>
+                <div class="card dm-container">
+                  <div class="card-header d-inline-block d-flex justify-content-between align-items-center">
+                    <div>
+                      <i class="fas fa-tags icon-tags me-1"></i>
+                      <h1 class="d-inline-block">Categories</h1>
+                    </div>
+                    <div>
+                      <span class="copy icon-tags me-1" data-toggle="tooltip" data-placement="bottom"
+                        title="Copy all tags"><i class="fas fa-copy"></i></span>
+                      <span class="remove-all-tags icon-tags" data-toggle="tooltip" data-placement="bottom"
+                        title="Delete all tags">&times</span>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <p> Use <strong> Comma (,) </strong> to separate tags. </strong> </p>
+                    <p> Input Relevant Recipe tags. Diet type or meal type/category. </p>
+                    <div class="tags">
+                      <input type="text" name="categories" placeholder="Add Tags" class="w-100 dm-container">
+                    </div>
+                  </div>
+                  <div class="card-footer"></div>
+                </div>
+              </div>
+            </section>
         </div>
+
+        <button type="submit" class="btn btn-primary col-lg-2 mx-auto mb-2" value="Upload">Submit</button>
+
+        </form>
       </div>
     </div>
+    </div>
+    <script src="../js/create-recipe.js"></script>
     <%- include('partials/footer') -%>

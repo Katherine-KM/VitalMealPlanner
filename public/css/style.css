@@ -372,38 +372,86 @@ fieldset div {
 }
 
 /* Create Recipe page */
+.direction-div, .ingredient-div {
+    width: 100%; 
+    display:flex; 
+}
+.add-direction-input, .add-ingredient-input, #caption { 
+    min-height: 2rem; 
+    overflow: hidden;
+    padding: 1rem 0 1rem;
+    padding-left: 1rem;
+}
+.add-direction-input, .add-ingredient-input{
+    width: 80%;
+}
+.d-trash {
+    height: 2.5rem; 
+    width: 2.5rem; 
+    margin: auto;
+}
 .card h1 {
     font-size: 30px;
 }
-.tags {
+.icon-tags {
     font-size: 24px;
     display: inline-block;
 }
+.tags{
+    padding: 1rem; 
+    border: 1px solid black; 
+    border-radius: .5rem;
+}
+.tag{
+    display: inline-block;
+    background-color: var(--primary-color);
+    padding: .4rem .4rem .4rem 1rem;
+    margin: .4rem;
+    border-radius: 2rem;
+    color: white; 
+}
+.remove-tag {
+    display:inline-block;
+    width: 1.4rem; 
+    height: 1.4rem;
+    background-color: var(--secondary-color);
+    color: white; 
+    border-radius: 50%; 
+    margin-left: 0.5rem;
+    text-align: center;
+    line-height: 1.6rem;
+    cursor: pointer; 
+}
+.tags input {
+    padding: 1rem;
+    font: 400 1.1rem sans-serif; 
 
+    border: none; 
+    outline: none; 
+    background-color: transparent;
+}
 .copy:hover, .remove-all-tags:hover{
     cursor: pointer; 
 }
 
-input[type="text"], textarea {
-
-    background-color : rgba(201, 201, 201, 0.2) !important; 
-  
+input[type="text"], textarea, input[type="file"] {
+    border-radius: 0.5rem;
 }
 
 input[type=text]:focus, textarea:focus{
     outline: 2px solid var(--primary-color)!important; 
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(0, 200, 83, 0.5) !important;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(0, 200, 83, 0.1) !important;
   }
 
 /* Dark Mode Classes */
 .darkmode{
     background-color: var(--darkmode-grey-color)!important;
-    color: white; 
+    color: white !important; 
 }
 
 .darkmode-dark{
     background-color:var(--darkmode-dark-color) !important;
-    color: white;
+    color: white !important;
 }
 
 .dm-dark-border{
