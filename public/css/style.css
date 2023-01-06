@@ -434,11 +434,11 @@ fieldset div {
     cursor: pointer; 
 }
 
-input[type="text"], textarea, input[type="file"] {
+input[type="text"], textarea, input[type="file"], input[type="email"], input[type="password"]   {
     border-radius: 0.5rem;
 }
 
-input[type=text]:focus, textarea:focus{
+input[type=text]:focus, textarea:focus, input[type="file"]:focus, input[type="email"]:focus, input[type="password"]:focus {
     outline: 2px solid var(--primary-color)!important; 
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(0, 200, 83, 0.1) !important;
   }
