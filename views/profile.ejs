@@ -2,110 +2,184 @@
 
     <body class="d-flex flex-column min-vh-100 w-bg">
 
-        <div class="main container p-0 rounded mb-5 d-flex align-items-center flex-column justify-content-center dm-container">
+        <div
+            class="main container p-0 rounded mb-5 d-flex align-items-center flex-column justify-content-center dm-container">
             <section class="user-info-container d-flex flex-column align-items-center col-12 rounded">
                 <div class="bg-img-container rounded mb-3">
                 </div>
-                <div class="user-details-container mb-4 w-100 d-flex flex-column justify-content-center align-items-center">
+                <div
+                    class="user-details-container mb-4 w-100 d-flex flex-column justify-content-center align-items-center">
                     <div class="user-prof-img-container rounded-circle mb-2 dm-container">
-                        <img src="<%=userProf[0].image%>" alt="Profile Image" class="user-prof-img w-100 h-100 rounded-circle">
+                        <img src="<%=userProf[0].image%>" alt="Profile Image"
+                            class="user-prof-img w-100 h-100 rounded-circle">
                     </div>
                     <div class="user-details text-center">
-                        <div class="displayName"><h1 class="user-display-name"> <%=userProf[0].displayName%></h1> </div>
-                        <div class="bio"> <p class="m-0 p-bio"> <%=userProf[0].profBio%> </p> </div>
+                        <div class="displayName">
+                            <h1 class="user-display-name">
+                                <%=userProf[0].displayName%>
+                            </h1>
+                        </div>
+                        <div class="bio">
+                            <p class="m-0 p-bio">
+                                <%=userProf[0].profBio%>
+                            </p>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Profile Navigation Bar -->
                 <section class="prof-nav w-100 pb-3 dm-container">
                     <ul class="list-unstyled w-100 row m-0 text-center">
-                        <li class="col-4"><button class="btn btn-outline-primary" data-bs-toggle="recipes"
-                            data-bs-target="user-recipes-container">Recipes</button></li>
-                        <li class="col-4"><button class="btn btn-outline-primary">Favorites</button></li>
                         <% if(userProf[0].id===user.id){ %>
+                            <li class="col-4"><button class="btn btn-outline-primary" data-bs-toggle="recipes"
+                                    data-bs-target="user-recipes-container">Recipes</button></li>
+                            <li class="col-4"><button class="btn btn-outline-primary"
+                                    data-bs-toggle="favorites">Favorites</button></li>
+                            <% } else { %>
+                                <li class="col-6"><button class="btn btn-outline-primary" data-bs-toggle="recipes"
+                                        data-bs-target="user-recipes-container">Recipes</button></li>
+                                <li class="col-6"><button class="btn btn-outline-primary"
+                                        data-bs-toggle="favorites">Favorites</button></li>
+                                <% } %>
+                                    <% if(userProf[0].id===user.id){ %>
 
-                            <!-- Settings Button -->
-                            <!-- Button trigger modal -->
-                        <li class="col-4">
-                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-                                data-bs-target=".bd-example-modal-lg">
-                                Edit Profile
-                            </button>
-                        </li>
+                                        <!-- Settings Button -->
+                                        <!-- Button trigger modal -->
+                                        <li class="col-4">
+                                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+                                                data-bs-target=".bd-example-modal-lg">
+                                                Edit Profile
+                                            </button>
+                                        </li>
                     </ul>
                 </section>
-                            <!-- Modal -->
-                            <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog"
-                                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                                    <div class="modal-content dm-dark-container">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLongTitle">Edit Profile</h5>
-                                            <button type="button" class="close dm-dark-container border-0 h4"
-                                                data-bs-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
+
+                <!-- Edit User Settings Modal -->
+                <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                        <div class="modal-content dm-dark-container">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Edit Profile</h5>
+                                <button type="button" class="close dm-dark-container border-0 h4"
+                                    data-bs-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/profile/editProfile/<%= user.id %>" enctype="multipart/form-data"
+                                    method="POST" class="d-flex flex-column align-items-center">
+                                    <div class="edit-user-imgs-container position-relative">
+                                        <img class="edit-user-prof-img" src="<%=user.image%>" alt="">
+
+                                        <label for="imageUpload" class="form-label">
+                                            <i class="fas fa fa-camera icon-btn"></i>
+                                            <input type="file" class="form-control-file d-none" id="imageUpload"
+                                                name="file">
+                                        </label>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            <label for="displayName" class="form-label">Name</label>
+                                            <input maxlength='25' type="text" class="form-control" id="displayName"
+                                                placeholder="Display Name" name="displayName">
                                         </div>
-                                        <div class="modal-body">
-                                            <form action="/profile/editProfile/<%= user.id %>" enctype="multipart/form-data" method="POST" class="d-flex flex-column align-items-center">
-                                                <div class="edit-user-imgs-container position-relative">
-                                                    <img class="edit-user-prof-img" src="<%=user.image%>" alt="">
-                                                    
-                                                    <label for="imageUpload" class="form-label">
-                                                        <i class="fas fa fa-camera icon-btn"></i>
-                                                        <input type="file" class="form-control-file d-none" id="imageUpload" name="file">
-                                                    </label>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="mb-3">
-                                                        <label for="displayName" class="form-label">Name</label>
-                                                        <input maxlength='25' type="text" class="form-control" id="displayName" placeholder="Display Name" name="displayName">
-                                                      </div>
-                                                      <div class="mb-3">
-                                                        <label for="profBio" class="form-label">Bio</label>
-                                                        <textarea 
-                                                        maxlength='75' class="form-control" id="profBio" name="profBio" placeholder="Max Length Of 75 Chars"></textarea>
-                                                      </div>
-                                                </div> 
-                                                <div class=""> 
-                                                <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
-                                                </div> 
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer mb-5 p-0">
+                                        <div class="mb-3">
+                                            <label for="profBio" class="form-label">Bio</label>
+                                            <textarea maxlength='75' class="form-control" id="profBio" name="profBio"
+                                                placeholder="Max Length Of 75 Chars"></textarea>
                                         </div>
                                     </div>
+                                    <div class="">
+                                        <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer mb-5 p-0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+            </section>
+
+            <!-- User Recipes -->
+            <section class="user-recipes-container justify-content-center mb-2 active">
+                <ul class="list-unstyled m-0 p-0 justify-content-between row">
+                    <% for(var i=0; i<recipes.length; i++) {%>
+                        <li class="col-12 col-md-6 col-lg-5 mb-2 mt-3 g-3">
+                            <div class="recipe-card rounded shadow dm-dark-container">
+                                <div class="post-img-container">
+                                    <a class="feed-link" href="/recipe/<%= recipes[i]._id%>">
+                                        <img class="post-img rounded" src="<%= recipes[i].image%>">
+                                    </a>
+                                    <a href="/profile/<%=recipes[i].user.userName%>"><img
+                                            class="post-prof-img dm-container" src="<%= recipes[i].user.image%>"></a>
+                                </div>
+                                <div class="post-details">
+                                    <h2 class="recipe-title h4">
+                                        <%= recipes[i].title %>
+                                    </h2>
+                                    <p class="recipe-desc h6">
+                                        <%= recipes[i].caption %>
+                                    </p>
+                                    <a class="feed-link text-decoration-none h5 d-block"
+                                        href="/recipe/<%= recipes[i]._id%>"> View Recipe </a>
                                 </div>
                             </div>
-                            <% } %>
-            </section>
-            
-            <section class="user-recipes-container justify-content-center mb-2">
-                <ul class="list-unstyled m-0 p-0 justify-content-between row">
-                  <% for(var i=0; i<recipes.length; i++) {%>
-                    <li class="col-12 col-md-6 col-lg-5 mb-2 mt-3 g-3">
-                      <div class="recipe-card rounded shadow dm-dark-container">
-                        <div class="post-img-container">
-                          <a class="feed-link" href="/recipe/<%= recipes[i]._id%>">
-                            <img class="post-img rounded" src="<%= recipes[i].image%>">
-                          </a>
-                          <a href="/profile/<%=recipes[i].user.userName%>"><img class="post-prof-img dm-container" src="<%= recipes[i].user.image%>"></a>
-                        </div>
-                        <div class="post-details">
-                          <h2 class="recipe-title h4" >
-                            <%= recipes[i].title %>
-                          </h2>
-                          <p class="recipe-desc h6">
-                            <%= recipes[i].caption %>
-                          </p>
-                          <a class="feed-link text-decoration-none h5 d-block" href="/recipe/<%= recipes[i]._id%>"> View Recipe </a>
-                        </div>
-                      </div>
-                    </li>
+                        </li>
                     <% } %>
                 </ul>
-              </section>
-            
-        </div>
+            </section>
 
+            <!-- User Favorites -->
+            <section class="user-favorites-container justify-content-center mb-2">
+                <ul class="list-unstyled m-0 p-0 justify-content-between row">
+                    <% for(var i=0; i<favRecipes.length; i++) {%>
+                        <li class="col-12 col-md-6 col-lg-5 mb-2 mt-3 g-3">
+                            <div class="recipe-card rounded shadow dm-dark-container">
+                                <div class="post-img-container">
+                                    <a class="feed-link" href="/recipe/<%= recipes[i]._id%>">
+                                        <img class="post-img rounded" src="<%= recipes[i].image%>">
+                                    </a>
+                                    <a href="/profile/<%=recipes[i].user.userName%>"><img
+                                            class="post-prof-img dm-container" src="<%= recipes[i].user.image%>"></a>
+                                </div>
+                                <div class="post-details">
+                                    <h2 class="recipe-title h4">
+                                        <%= recipes[i].title %>
+                                    </h2>
+                                    <p class="recipe-desc h6">
+                                        <%= recipes[i].caption %>
+                                    </p>
+                                    <a class="feed-link text-decoration-none h5 d-block"
+                                        href="/recipe/<%= recipes[i]._id%>"> View Recipe </a>
+                                </div>
+                            </div>
+                        </li>
+                    <% } %>
+                </ul>
+            </section>
+        </div>
+        <script>
+            // get the buttons and containers
+            const recipesButton = document.getElementById('recipes-button');
+            const favoritesButton = document.getElementById('favorites-button');
+            const recipesContainer = document.getElementById('user-recipes-container');
+            const favoritesContainer = document.getElementById('user-favorites-container');
+
+            // add a click event listener to the recipes button
+            recipesButton.addEventListener('click', function () {
+                // remove the active class from the favorites container and add it to the recipes container
+                favoritesContainer.classList.remove('active');
+                recipesContainer.classList.add('active');
+            });
+
+            // add a click event listener to the favorites button
+            favoritesButton.addEventListener('click', function () {
+                // remove the active class from the recipes container and add it to the favorites container
+                recipesContainer.classList.remove('active');
+                favoritesContainer.classList.add('active');
+            });
+        </script>
         <%- include('partials/footer') -%>

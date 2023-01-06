@@ -7,13 +7,16 @@ const User = require("../models/User");
 module.exports = {
   getProfile: async (req, res) => {
     try {
-      const userProf = await User.find({userName: req.params.userName})
-      // const recipes = await Recipe.find({userProf}).populate('user');
-      // const favRecipes = await Recipe.find({favorites: userProf}).sort({ createdAt: "desc" }).populate('user');
-      const recipes = await Recipe.find().sort({ createdAt: "desc" }).populate('user');
-
-      res.render("profile.ejs", { recipes: recipes, title:'Vital Cook Book - Recipe Feed', user: req.user, userProf: userProf});
-      // res.render("profile.ejs", { recipes: recipes, favRecipes: favRecipes, user: req.user, userProf: userProf, title: 'Vital Cook Book - Profile' });
+      // find the user by their userName
+      const userProf = await User.find({userName: req.params.userName}).populate('user')
+      // get the user's _id
+      const userId = userProf[0]._id; 
+      // find the recipes that are favorited by the user
+      const favRecipes = await Recipe.find({favorites: userId}).sort({ createdAt: "desc" }).populate('user');
+      // find the recipes that were created by the user
+      const recipes = await Recipe.find({user: userId}).sort({ createdAt: "desc" })
+      // render the profile page with the recipes and favorited recipes
+      res.render("profile.ejs", { recipes: recipes, favRecipes: favRecipes, user: req.user, userProf: userProf, title: 'Vital Cook Book - Profile' });
     } catch (err) {
       console.log(err);
     }
