@@ -1,0 +1,94 @@
+<%- include('partials/header-signed-in') -%>
+
+  <body class="d-flex flex-column min-vh-100 w-bg">
+    <div class="container">
+      <div class="row justify-content-center mt-5">
+        <div class="col-6">
+          <h1>
+            <%= recipe.title %>
+          </h1>
+          <span> Created By </span>
+          <img class="img-fluid" src="<%= recipe.image%>" />
+
+          <div class="row justify-content-between">
+            <form class="col-1" action="/recipe/likeRecipe/<%= recipe.id %>?_method=PUT" method="POST">
+              <button
+                class="<% if(recipe.likes.includes(user.id)){ %> fas fa-heart <% } else { %> far fa-heart <% } %> btn btn-primary"
+                type="submit"></button>
+            </form>
+            <h3 class="col-3">Likes: <%= recipe.likes.length %>
+            </h3>
+
+            <form class="col-1" action="/recipe/favoriteRecipe/<%= recipe.id %>?_method=PUT" method="POST">
+              <button
+                class="<%if(recipe.favorites.includes(user.id)){ %> fas fa-solid fa-star <%} else { %> far fa-regular fa-star <% }%> btn btn-primary"
+                type="submit"></button>
+            </form>
+
+            <%if(recipe.user==user.id){ %>
+              <form action="/recipe/deleteRecipe/<%= recipe.id %>?_method=DELETE" method="POST" class="col-3">
+                <button class="btn btn-primary fa fa-trash" type="submit"></button>
+              </form>
+              <%}%>
+
+          </div>
+          <%= recipe.caption %>
+        </div>
+
+        <div class="col-6 mt-5">
+          <div class="col-12">
+            <p>
+              <%= recipe.description %>
+            </p>
+            <ul>
+              <% for(let i=0; i < recipe.ingredients.length; i++){ %>
+                <li>
+                  <%= recipe.ingredients[i] %>
+                </li>
+                <% } %>
+            </ul>
+            <ul>
+              <% for(let i=0; i < recipe.directions.length; i++){ %>
+                <li>
+                  <%= recipe.directions[i] %>
+                </li>
+                <% } %>
+            </ul>
+          </div>
+          <form action="/recipe/createComment/<%= recipe.id %>" method="post">
+            <label for="comment" class="form-label"></label>
+            <input name="comment" type="text" class="d-block mb-3" placeholder="Add a comment...">
+            <button class="btn btn-primary" type="submit">+ New Comment</button>
+          </form>
+
+          <div class="mt-5 text-center">
+            <ul>
+              <% for(let i=0; i < comments.length; i++) { %>
+                <div>
+                  <li> <img src="<%= comments[i].createdByProfImg %>" alt="">
+                    <%=comments[i].createdByUserName %>
+                      <%= comments[i].comment %>
+                  </li>
+                  <form action="/recipe/likeComment/<%= comments[i].id %>?_method=PUT" method="POST">
+                    <button class="btn btn-primary" type="submit">Like</button>
+                  </form>
+                  <div>
+                    <%= comments[i].likes.length %>
+                  </div>
+                  <form action="/recipe/deleteComment/<%= recipe.id %>/<%= comments[i].id %>?_method=DELETE"
+                    method="POST">
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                  </form>
+                </div>
+                <% } %>
+            </ul>
+          </div>
+
+
+        </div>
+        <div class="col-6 mt-5 text-center">
+          <a class="btn btn-primary" href="/profile">Return to Profile</a>
+          <a class="btn btn-primary" href="/feed">Return to Feed</a>
+        </div>
+      </div>
+      <%- include('partials/footer') -%>

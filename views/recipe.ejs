@@ -1,94 +1,68 @@
 <%- include('partials/header-signed-in') -%>
 
-  <body class="d-flex flex-column min-vh-100 w-bg">
-    <div class="container">
-      <div class="row justify-content-center mt-5">
-        <div class="col-6">
-          <h1>
-            <%= recipe.title %>
-          </h1>
-          <span> Created By </span>
-          <img class="img-fluid" src="<%= recipe.image%>" />
+    <body class="d-flex flex-column min-vh-100 w-bg">
+        <div class="main container dm-container p-5 d-flex flex-column">
+            <nav aria-label="breadcrumb" class="mb-2">
+                <ol class="breadcrumb d-flex">
+                    <li class="breadcrumb-item"><a href="/feed">Feed</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        <%= recipe.title %>
+                    </li>
+                </ol>
+            </nav>
+            <% if (recipe !=null) { %>
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-4">
+                        <img src="<%= recipe.image%>" alt="<%= recipe.title %>" class="post-img rounded" loading="lazy">
+                    </div>
 
-          <div class="row justify-content-between">
-            <form class="col-1" action="/recipe/likeRecipe/<%= recipe.id %>?_method=PUT" method="POST">
-              <button
-                class="<% if(recipe.likes.includes(user.id)){ %> fas fa-heart <% } else { %> far fa-heart <% } %> btn btn-primary"
-                type="submit"></button>
-            </form>
-            <h3 class="col-3">Likes: <%= recipe.likes.length %>
-            </h3>
-
-            <form class="col-1" action="/recipe/favoriteRecipe/<%= recipe.id %>?_method=PUT" method="POST">
-              <button
-                class="<%if(recipe.favorites.includes(user.id)){ %> fas fa-solid fa-star <%} else { %> far fa-regular fa-star <% }%> btn btn-primary"
-                type="submit"></button>
-            </form>
-
-            <%if(recipe.user==user.id){ %>
-              <form action="/recipe/deleteRecipe/<%= recipe.id %>?_method=DELETE" method="POST" class="col-3">
-                <button class="btn btn-primary fa fa-trash" type="submit"></button>
-              </form>
-              <%}%>
-
-          </div>
-          <%= recipe.caption %>
-        </div>
-
-        <div class="col-6 mt-5">
-          <div class="col-12">
-            <p>
-              <%= recipe.description %>
-            </p>
-            <ul>
-              <% for(let i=0; i < recipe.ingredients.length; i++){ %>
-                <li>
-                  <%= recipe.ingredients[i] %>
-                </li>
-                <% } %>
-            </ul>
-            <ul>
-              <% for(let i=0; i < recipe.directions.length; i++){ %>
-                <li>
-                  <%= recipe.directions[i] %>
-                </li>
-                <% } %>
-            </ul>
-          </div>
-          <form action="/recipe/createComment/<%= recipe.id %>" method="post">
-            <label for="comment" class="form-label"></label>
-            <input name="comment" type="text" class="d-block mb-3" placeholder="Add a comment...">
-            <button class="btn btn-primary" type="submit">+ New Comment</button>
-          </form>
-
-          <div class="mt-5 text-center">
-            <ul>
-              <% for(let i=0; i < comments.length; i++) { %>
-                <div>
-                  <li> <img src="<%= comments[i].createdByProfImg %>" alt="">
-                    <%=comments[i].createdByUserName %>
-                      <%= comments[i].comment %>
-                  </li>
-                  <form action="/recipe/likeComment/<%= comments[i].id %>?_method=PUT" method="POST">
-                    <button class="btn btn-primary" type="submit">Like</button>
-                  </form>
-                  <div>
-                    <%= comments[i].likes.length %>
-                  </div>
-                  <form action="/recipe/deleteComment/<%= recipe.id %>/<%= comments[i].id %>?_method=DELETE"
-                    method="POST">
-                    <button class="btn btn-danger" type="submit">Delete</button>
-                  </form>
+                    <div class="col-12 col-md-8">
+                        <div class="row">
+                            <div class="col-12">
+                                <h1><%= recipe.title %></h1>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-tag" viewBox="0 0 16 16">
+                                    <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z" />
+                                    <path
+                                    d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586 7 7L13.586 9l-7-7H2v4.586z" />
+                                </svg>
+                                <%= recipe.category %>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <%= recipe.caption %>
+                            </div>
+                            <div class="col-12">
+                                <h4>Cooking Instructions</h4>
+                                <div class="row pt-4">
+                                    <div class="col-12">
+                                        <h4>Directions</h4>
+                                        <ul class="list-group list-group-flush">
+                                            <% recipe.directions.forEach(function(directions, index){ %>
+                                                <li class="list-group-item dm-dark-container mb-2">
+                                                    <%= directions %> 
+                                                </li>
+                                            <% }) %> 
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="row pt-4">
+                                    <div class="col-12">
+                                        <h4>Ingredients</h4>
+                                        <ul class="list-group list-group-flush">
+                                            <% recipe.ingredients.forEach(function(ingredients, index){ %>
+                                                <li class="list-group-item dm-dark-container mb-2">
+                                                    <%= ingredients %> 
+                                                </li>
+                                            <% }) %> 
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <% } %>
-            </ul>
-          </div>
-
-
         </div>
-        <div class="col-6 mt-5 text-center">
-          <a class="btn btn-primary" href="/profile">Return to Profile</a>
-          <a class="btn btn-primary" href="/feed">Return to Feed</a>
-        </div>
-      </div>
-      <%- include('partials/footer') -%>
+        <%- include('partials/footer') -%>
