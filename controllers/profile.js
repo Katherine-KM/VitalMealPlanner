@@ -3,6 +3,7 @@ const Recipe = require("../models/Recipe");
 const Comment = require("../models/Comment");
 const Category = require("../models/Category");
 const User = require("../models/User");
+const mongoose = require("mongoose");
 
 module.exports = {
   getProfile: async (req, res) => {
@@ -11,12 +12,11 @@ module.exports = {
       const userProf = await User.find({userName: req.params.userName}).populate('user')
       // get the user's _id
       const userId = userProf[0]._id; 
-      // find the recipes that are favorited by the user
-      const favRecipes = await Recipe.find({favorites: userId}).sort({ createdAt: "desc" }).populate('user');
-      // find the recipes that were created by the user
-      const recipes = await Recipe.find({user: userId}).sort({ createdAt: "desc" })
-      // render the profile page with the recipes and favorited recipes
-      res.render("profile.ejs", { recipes: recipes, favRecipes: favRecipes, user: req.user, userProf: userProf, title: 'Vital Cook Book - Profile' });
+      // Find the Recipe documents that have the userIdObjectId value in the favorites field
+      const favRecipes = await Recipe.find({favorites: {$in: [`${userId}`]}}).sort({ createdAt: "desc" }).populate('user');
+      // Find the Recipe documents that are created by the user with the userId
+      const recipes = await Recipe.find({ user: userId }).sort({ createdAt: "desc" }).populate('user');
+      res.render("profile.ejs", { recipes: recipes, favRecipes: favRecipes, user: req.user, userId: userId, userProf: userProf, title: 'Vital Cook Book - Profile' });
     } catch (err) {
       console.log(err);
     }

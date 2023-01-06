@@ -372,13 +372,13 @@ fieldset div {
 }
 
 /* Recipes/Favorites Section */
-.user-recipes-container,
-.user-favorites-container {
+#user-recipes-container,
+#user-favorites-container {
   display: none;
 }
 
-.user-recipes-container.active,
-.user-favorites-container.active {
+#user-recipes-container.active,
+#user-favorites-container.active {
   display: block;
 }
 
