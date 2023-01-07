@@ -9,7 +9,7 @@ const UserSchema = new mongoose.Schema({
   profBio: String,
   image: {
     type: String,
-    require: true,
+    default: "https://i.ibb.co/hc4yWD5/defaultuser.png",
   },
   cloudinaryId: {
     type: String,
