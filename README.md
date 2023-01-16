@@ -13,9 +13,11 @@ I learned the importance of using a structured and modular approach to structuri
 
 ## Demo Login
 
-Demo Email: Testing@gmail.com
+Demo Email: 
+Testing@gmail.com
 
-Demo password: TesterNoTesting
+Demo password: 
+TesterNoTesting
 
 ## Installation
 
