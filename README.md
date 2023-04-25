@@ -36,24 +36,24 @@ TesterNoTesting
   
   <tr>
     <td width="33.3%"  style="align:center;" valign="top">
-<a target="_blank" href="https://katherinemarcott.netlify.app/">My Portfolio</a>
+<a target="_blank" href="https://katherinek.netlify.app/">My Portfolio</a>
         <br />
       <a target="_blank" href="https://github.com/KatherineMarcott/CurrentPortfolio">
-            <img src="https://user-images.githubusercontent.com/96846178/211113146-50415fcc-eb73-447c-9ddd-53acd4365593.PNG" width: "100%"; alt="portfolio">
+            <img src="https://user-images.githubusercontent.com/96846178/211113146-50415fcc-eb73-447c-9ddd-53acd4365593.PNG" width="100%" height="100%" alt="portfolio">
         </a>
     </td>
     <td width="33.3%" valign="top">
 <a target="_blank" href="https://wreckers.netlify.app/"> Wreckers Client Site"</a>
       <br />
         <a target="_blank" href="https://github.com/KatherineMarcott/top-flight-wrecker-recovery">
-          <img src="https://user-images.githubusercontent.com/96846178/211114912-e88b10a7-51c5-46e4-bf25-6d681c683a16.PNG" width="100%" alt="TopFlight Client Site"/>
+          <img src="https://user-images.githubusercontent.com/96846178/211114912-e88b10a7-51c5-46e4-bf25-6d681c683a16.PNG" width="100%" height="100%" alt="TopFlight Client Site"/>
         </a>
     </td>
     <td width="33.3%" valign="top">
 <a target="_blank" href="https://fadeoclock.netlify.app/">Fade O'Clock BarberShop Client Site</a>
         <br />
         <a target="_blank" href="https://github.com/KatherineMarcott/barberShop">
-          <img src="https://user-images.githubusercontent.com/96846178/211116706-b9637d29-b602-4389-8037-cdfb61664540.PNG" width="100%" alt="Fade O'Clock BarberShop Client website"/>
+          <img src="https://user-images.githubusercontent.com/96846178/211116706-b9637d29-b602-4389-8037-cdfb61664540.PNG" width="100%" height="100%" alt="Fade O'Clock BarberShop Client website"/>
         </a>
     </td>
   </tr>
